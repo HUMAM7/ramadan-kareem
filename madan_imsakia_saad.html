@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>إمساكية رمضان | صدقة جارية</title>
+    
+    <meta property="og:title" content="إمساكية رمضان المبارك">
+    <meta property="og:description" content="صدقة جارية عن روح المرحومة سعاد خليل إبراهيم">
+    <meta name="theme-color" content="#1a5f7a">
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --accent: #c7a17a;
+            --bg-body: linear-gradient(135deg, #1a5f7a 0%, #2c3e50 100%);
+            --bg-container: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #555;
+            --bg-light: #f8f9fa;
+            --border-color: #eee;
+            --azkar-color: #8e44ad;
+            --quran-color: #0b4e2e; 
+            --quran-bg: #f4fdf4;
+            --names-color: #d35400;
+            --dead-color: #5d6d7e;
+            --dream-color: #8e44ad;
+            --table-head: #1a5f7a;
+            --table-head-text: #fff;
+            --table-row-even: #f9fbfc;
+            --table-active: #fff5e6;
+            --tab-bg: #e0e0e0;
+            --tab-text: #000;
+        }
+
+        body.dark-mode {
+            --primary: #6ab0cc;
+            --accent: #e0b46a;
+            --bg-body: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            --bg-container: #1e272e;
+            --text-main: #ecf0f1;
+            --text-secondary: #bdc3c7;
+            --bg-light: #2c3e50;
+            --border-color: #34495e;
+            --azkar-color: #9b59b6;
+            --quran-color: #2ecc71;
+            --quran-bg: #1e272e;
+            --names-color: #e67e22;
+            --dead-color: #95a5a6;
+            --dream-color: #9b59b6;
+            --table-head: #2c3e50;
+            --table-head-text: #fff;
+            --table-row-even: #25333e;
+            --table-active: #34495e;
+            --tab-bg: #2c3e50;
+            --tab-text: #bdc3c7;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; transition: background 0.3s, color 0.3s; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 5px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            background: var(--bg-container);
+            max-width: 850px;
+            width: 100%;
+            margin: 5px auto;
+            padding: 10px 5px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: absolute; top: 15px; left: 15px;
+            background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 50%;
+            width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.2em; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .header-section h1 { color: var(--primary); font-size: 1.5em; text-align: center; margin-bottom: 10px; margin-top: 35px; }
+        .subtitle-box { background: var(--bg-light); padding: 10px; border-radius: 10px; border: 2px solid var(--accent); text-align: center; position: relative; z-index: 2; margin-bottom: 10px; }
+        .deceased-name { font-size: 1.3em; color: var(--primary); font-weight: 900; display: block; margin: 3px 0; }
+        
+        .scrolling-duas-container { overflow: hidden; white-space: nowrap; padding: 10px 0; background: var(--table-head); color: var(--table-head-text); border-radius: 8px; margin-bottom: 15px; position: relative; }
+        .scrolling-duas-content { display: inline-block; padding-left: 100%; animation: scroll 720s linear infinite; } 
+        .dua-item { display: inline-block; padding: 0 60px; font-size: 1.1em; }
+        @keyframes scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(100%, 0); } }
+
+        .countdown-box { background: linear-gradient(45deg, #1a5f7a, #2980b9); color: white; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 15px; direction: ltr; }
+        .timer-display { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+        .time-unit { display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 8px; min-width: 60px; }
+        .time-value { font-size: 1.8em; font-weight: 900; line-height: 1; }
+        .time-label { font-size: 0.8em; margin-top: 5px; opacity: 0.9; font-family: 'Tajawal', sans-serif; }
+        .timer-label-main { font-size: 1.1em; opacity: 0.95; direction: rtl; font-family: 'Tajawal', sans-serif; }
+        
+        #iftarDua { margin-top: 8px; display: none; background: rgba(0,0,0,0.2); padding: 5px; border-radius: 5px; font-size: 0.9em; font-family: 'Tajawal', sans-serif; direction: rtl; }
+
+        .controls-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 15px; }
+        .location-row { display: grid; grid-template-columns: 1fr auto; gap: 5px; }
+        
+        select { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Tajawal', sans-serif; font-size: 0.9em; color: var(--primary); font-weight: bold; background: var(--bg-container); outline: none; }
+        .btn-gps { background: var(--primary); color: white; border: none; border-radius: 8px; padding: 0 15px; font-size: 1.2em; cursor: pointer; }
+
+        .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 20px; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.75em; }
+        th { background: var(--table-head); color: var(--table-head-text); padding: 8px 2px; font-weight: bold; border-left: 1px solid rgba(255,255,255,0.2); }
+        td { padding: 6px 1px; border-bottom: 1px solid var(--border-color); text-align: center; color: var(--text-main); border-left: 1px solid var(--border-color); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+        tr.active-day { background-color: var(--table-active) !important; font-weight: bold; border-right: 4px solid var(--accent); }
+        .gregorian-date { font-size: 0.75em; color: var(--text-secondary); display: block; margin-top: 1px; }
+        .day-cell { white-space: nowrap; font-weight: bold; font-size: 0.9em; padding: 5px 4px; }
+
+        .footer-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 10px; background: var(--bg-light); border-radius: 10px; }
+        .btn { border: none; padding: 10px; border-radius: 8px; font-size: 0.9em; cursor: pointer; font-family: 'Tajawal', sans-serif; font-weight: bold; flex: 1 1 120px; color: white; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+        
+        .btn-adhan { background: var(--accent); }
+        .btn-whatsapp { background: #25D366; }
+        .btn-azkar { background: var(--azkar-color); }
+
+        .qrcode-box { text-align: center; margin-top: 15px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .visitor-box { margin-top: 15px; font-size: 0.9em; color: var(--text-secondary); background: rgba(0,0,0,0.05); padding: 8px 20px; border-radius: 20px; display: inline-block; font-weight: bold; border: 1px solid var(--border-color); direction: rtl; }
+        .developer-credit { margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.75em; color: var(--text-secondary); }
+
+        /* Modal Styles */
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(3px); }
+        .modal-content { background-color: var(--bg-container); margin: 2vh auto; width: 95%; max-width: 550px; border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; height: 95vh; animation: slideUp 0.3s ease-out; border: 1px solid var(--border-color); position: relative; }
+        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        .modal-header { background: var(--azkar-color); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .tab-container { display: flex; flex-wrap: wrap; background: var(--bg-light); padding: 10px; gap: 8px; justify-content: center; }
+        .tab-btn { flex: 1 1 22%; padding: 8px 5px; border: 1px solid var(--border-color); background: var(--tab-bg); color: var(--tab-text); cursor: pointer; font-weight: bold; border-radius: 8px; font-size: 0.8em; text-align: center; }
+        .tab-btn.active { background: var(--azkar-color); color: white; border-color: var(--azkar-color); box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        
+        .tab-btn.quran-tab.active { background: var(--quran-color) !important; border-color: var(--quran-color) !important; }
+        .tab-btn.names-tab.active { background: var(--names-color) !important; border-color: var(--names-color) !important; }
+        .tab-btn.dead-tab.active { background: var(--dead-color) !important; border-color: var(--dead-color) !important; }
+        .tab-btn.dream-tab.active { background: var(--dream-color) !important; border-color: var(--dream-color) !important; }
+
+        .modal-body { padding: 15px; overflow-y: auto; background: var(--bg-container); flex-grow: 1; position: relative; }
+        .tab-content { display: none; }
+        
+        .zekr-item { background: var(--bg-light); padding: 15px; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border-color); border-right: 5px solid var(--azkar-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .zekr-text { font-size: 1.1em; line-height: 1.8; color: var(--text-main); font-family: 'Amiri', serif; }
+        .zekr-count { font-size: 0.9em; color: var(--azkar-color); font-weight: bold; display: block; margin-top: 8px; background: rgba(142, 68, 173, 0.1); width: fit-content; padding: 4px 12px; border-radius: 15px; }
+
+        .quran-controls { position: sticky; top: 0; background: var(--bg-container); z-index: 100; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); display: flex; gap: 5px; flex-wrap: wrap; transition: transform 0.3s ease-in-out; }
+        .quran-controls.hidden-bar { transform: translateY(-100%); }
+
+        .quran-text-area { font-family: 'Amiri', serif; font-size: 1.6em; line-height: 2.4; text-align: justify; text-align-last: center; padding: 20px 10px; color: var(--text-main); background: var(--quran-bg); border-radius: 10px; min-height: 300px; }
+        .basmala { font-family: 'Amiri', serif; font-size: 1.3em; color: var(--quran-color); margin-bottom: 25px; display: block; text-align: center; font-weight: bold; }
+        .ayah-number { font-size: 0.6em; color: var(--quran-color); border: 1px solid var(--quran-color); border-radius: 50%; padding: 2px 8px; margin: 0 5px; display: inline-block; vertical-align: middle; font-weight: bold; font-family: 'Tajawal'; }
+        .surah-title { color: var(--quran-color); text-align: center; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 15px; font-family: 'Amiri', serif; }
+        
+        .btn-save-bm { background: #e67e22; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-size: 0.85em; flex: 1; font-family: 'Tajawal'; }
+        .btn-load-bm { background: var(--quran-color); color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-size: 0.85em; flex: 1; font-family: 'Tajawal'; }
+
+        /* تعديل تصميم أسماء الله الحسنى */
+        .names-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; text-align: center; }
+        .name-card { background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px 5px; box-shadow: 0 3px 6px rgba(0,0,0,0.05); transition: transform 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .name-card:active { transform: scale(0.95); }
+        .allah-name { font-family: 'Amiri', serif; font-size: 1.5em; color: var(--names-color); font-weight: bold; display: block; margin-bottom: 5px; }
+        .name-meaning { font-size: 0.7em; color: var(--text-secondary); line-height: 1.3; font-family: 'Tajawal'; font-weight: normal; }
+
+        .dead-header { background: #eee; padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 15px; border: 1px dashed var(--dead-color); }
+        .dead-header strong { display: block; color: var(--primary); font-size: 1.1em; margin-bottom: 5px; }
+        .dead-dua-card { border-right: 5px solid var(--dead-color); background: var(--bg-light); padding: 15px; margin-bottom: 10px; border-radius: 10px; font-family: 'Amiri', serif; font-size: 1.1em; }
+
+        .dream-container { text-align: center; padding: 10px; }
+        .dream-input { width: 100%; padding: 15px; border: 2px solid var(--dream-color); border-radius: 10px; font-family: 'Tajawal'; font-size: 1em; margin-bottom: 10px; background: var(--bg-light); color: var(--text-main); min-height: 100px; resize: vertical; }
+        .dream-btn { background: var(--dream-color); color: white; border: none; padding: 10px 30px; border-radius: 20px; font-size: 1.1em; cursor: pointer; width: 100%; font-weight: bold; box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3); }
+        .dream-result { margin-top: 20px; padding: 15px; background: rgba(142, 68, 173, 0.1); border-radius: 10px; text-align: right; display: none; border: 1px solid var(--dream-color); }
+        .dream-result h4 { margin: 0 0 10px 0; color: var(--dream-color); }
+
+        .rosary-container { text-align: center; padding: 20px 10px; }
+        .current-tasbeeh { font-size: 2em; color: var(--accent); font-weight: 900; margin-bottom: 15px; min-height: 50px; font-family: 'Amiri', serif; transition: transform 0.2s; pointer-events: none; }
+        .rosary-counter { font-size: 4em; font-weight: bold; color: var(--azkar-color); margin: 10px 0; font-family: sans-serif; }
+        .rosary-btn { width: 130px; height: 130px; border-radius: 50%; border: none; background: linear-gradient(135deg, #8e44ad, #9b59b6); color: white; font-size: 1.4em; font-weight: bold; cursor: pointer; box-shadow: 0 8px 15px rgba(142, 68, 173, 0.4); transform: scale(1); transition: transform 0.1s; }
+        .rosary-btn:active { transform: scale(0.95); }
+        .reset-btn { margin-top: 25px; background: #e74c3c; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        .rosary-note { margin-top: 20px; color: #2c3e50; font-size: 1.1em; font-weight: 900; background: rgba(0,0,0,0.08); padding: 15px; border-radius: 12px; border: 2px solid var(--azkar-color); text-shadow: 0 1px 1px rgba(255,255,255,0.5); }
+        body.dark-mode .rosary-note { color: #ecf0f1; background: rgba(255,255,255,0.1); text-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+
+        .pc-warning { background: #fff3cd; color: #856404; padding: 15px; border-radius: 10px; border: 1px solid #ffeeba; margin-top: 10px; font-weight: bold; text-align: center; display: none; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+
+    <div class="header-section">
+        <h1>🌙 إمساكية شهر رمضان</h1>
+        <div class="subtitle-box">
+            صدقة جارية عن روح المرحومة بإذن الله<br>
+            <strong class="deceased-name">سعاد خليل إبراهيم</strong>
+            <small style="display:block; margin-top:5px;">اللهم اغفر لها وارحمها وأسكنها فسيح جناتك</small>
+        </div>
+        
+        <div class="scrolling-duas-container">
+            <div class="scrolling-duas-content" id="scrollingDuas"></div>
+        </div>
+    </div>
+
+    <div class="countdown-box" id="countdownArea">
+        <div class="timer-label-main" id="timerLabel">⏳ جاري الحساب...</div>
+        <div class="timer-display" id="timerDisplay">
+            <div class="time-unit"> <span class="time-value" id="daysVal">00</span> <span class="time-label">يوم</span> </div>
+            <div class="time-unit"> <span class="time-value" id="hoursVal">00</span> <span class="time-label">ساعة</span> </div>
+            <div class="time-unit"> <span class="time-value" id="minsVal">00</span> <span class="time-label">دقيقة</span> </div>
+            <div class="time-unit" style="background: rgba(255,255,255,0.2);"> <span class="time-value" id="secsVal">00</span> <span class="time-label">ثانية</span> </div>
+        </div>
+        <div id="iftarDua">"ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ"</div>
+    </div>
+
+    <div class="controls-grid" id="controlsArea">
+        <div class="control-group">
+            <label>📍 الموقع:</label>
+            <div class="location-row">
+                <select id="city" onchange="loadTimes(true)">
+                    <option value="Ramadi" selected>الأنبار - الرمادي</option>
+                    <option value="Baghdad">بغداد - العاصمة</option>
+                    <option value="Fallujah">الأنبار - الفلوجة</option>
+                    <option value="Mosul">نينوى - الموصل</option>
+                    <option value="Basra">البصرة</option>
+                    <option value="Erbil">أربيل</option>
+                    <option value="Kirkuk">كركوك</option>
+                    <option value="Sulaymaniyah">السليمانية</option>
+                    <option value="Duhok">دهوك</option>
+                    <option value="Karbala">كربلاء المقدسة</option>
+                    <option value="Najaf">النجف الأشرف</option>
+                    <option value="Nasiriyah">ذي قار - الناصرية</option>
+                    <option value="Amarah">ميسان - العمارة</option>
+                    <option value="Kut">واسط - الكوت</option>
+                    <option value="Diwaniyah">القادسية - الديوانية</option>
+                    <option value="Hilla">بابل - الحلة</option>
+                    <option value="Baqubah">ديالى - بعقوبة</option>
+                    <option value="Samawah">المثنى - السماوة</option>
+                </select>
+                <button class="btn-gps" onclick="getLocation()" title="حدد موقعي الحالي">📍</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>📅 تصحيح التاريخ:</label>
+            <select id="hijriAdj" onchange="loadTimes(true)">
+                <option value="-2">-2 يوم</option>
+                <option value="-1">-1 يوم</option>
+                <option value="0" selected>تلقائي</option>
+                <option value="1">+1 يوم</option>
+                <option value="2">+2 يوم</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="pcWarning" class="pc-warning">⚠️ تصفح من الكمبيوتر</div>
+
+    <div class="table-wrap">
+        <table id="imsakia">
+            <thead>
+                <tr>
+                    <th class="day-cell">اليوم</th> 
+                    <th>الإمساك</th>
+                    <th>الفجر</th>
+                    <th>الظهر</th>
+                    <th>العصر</th>
+                    <th>المغرب</th>
+                    <th>العشاء</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <div class="footer-section" id="footerArea">
+        <button class="btn btn-adhan" id="adhanBtn" onclick="enableAdhan()">🔔 تفعيل الأذان</button>
+        <button class="btn btn-azkar" onclick="openModal()">📿 الأذكار والقرآن الكريم</button>
+        <button class="btn btn-whatsapp" onclick="shareWhatsapp()">📤 واتساب</button>
+        
+        <div class="qrcode-box">
+            <div id="qrcode"></div>
+            <span style="font-size:0.75em; color:var(--text-secondary); margin-top:5px;">امسح الكود للمشاركة</span>
+        </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <div class="visitor-box" id="visitorBox" style="display:none;">
+            👥 عدد الزوار: <span id="visitCount" style="color:var(--primary);">...</span>
+        </div>
+    </div>
+
+    <div class="developer-credit">
+        تم التطوير بواسطة <span style="color:var(--primary); font-weight:bold;">همام هاني</span> © <span id="year"></span>
+    </div>
+</div>
+
+<div id="azkarModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>📿 الأذكار والقرآن الكريم</h3>
+            <span style="cursor:pointer; font-size:1.5em;" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('morning', this)">☀️ الصباح</button>
+            <button class="tab-btn" onclick="switchTab('evening', this)">🌙 المساء</button>
+            <button class="tab-btn" onclick="switchTab('rosary', this)">📿 سبحة</button>
+            <button class="tab-btn" onclick="switchTab('generalDuas', this)">🤲 أدعية</button>
+            <button class="tab-btn quran-tab" onclick="switchTab('quran', this)">📖 القرآن</button>
+            <button class="tab-btn names-tab" onclick="switchTab('names', this)">أسماء الله الحسنى</button>
+            <button class="tab-btn dead-tab" onclick="switchTab('deadDuas', this)">دعاء للموتى</button>
+            <button class="tab-btn dream-tab" onclick="switchTab('dream', this)">💤 الأحلام</button>
+        </div>
+        
+        <div class="modal-body" id="modalBody">
+            <div id="morning" class="tab-content"></div>
+            <div id="evening" class="tab-content" style="display:none;"></div>
+            
+            <div id="rosary" class="tab-content" style="display:none;">
+                <div class="rosary-container">
+                    <div id="currentTasbeeh" class="current-tasbeeh">سبحان الله</div>
+                    <div class="rosary-counter" id="rosaryCount">0</div>
+                    <button class="rosary-btn" onclick="increaseRosary()">اضغط</button><br>
+                    <button class="reset-btn" onclick="resetRosary()">تصفير</button>
+                    <div class="rosary-note">اجعل هذه صدقة عن روح المرحومة سعاد خليل إبراهيم</div>
+                </div>
+            </div>
+            
+            <div id="generalDuas" class="tab-content" style="display:none;"></div>
+
+            <div id="quran" class="tab-content" style="display:none;">
+                <div id="quranControls" class="quran-controls">
+                    <select id="surahSelect" onchange="fetchSurah(this.value)"></select>
+                    <button class="btn-save-bm" onclick="saveBookmark()">🔖 حفظ المكان</button>
+                    <button class="btn-load-bm" onclick="loadBookmark()">📂 استكمال</button>
+                </div>
+                <div id="quranLoader" style="text-align:center; display:none; padding:20px; font-weight:bold; color:var(--primary);">⏳ جاري تحميل السورة الكريمة...</div>
+                <div id="quranText" class="quran-text-area">
+                    <div style="display:flex; flex-direction:column; justify-content:center; height:100%;">
+                        <p style="font-size:0.9em; color:var(--text-secondary); text-align:center;">اختر السورة من القائمة للبدء في القراءة</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="names" class="tab-content" style="display:none;">
+                <div class="names-grid" id="namesGrid"></div>
+            </div>
+
+            <div id="deadDuas" class="tab-content" style="display:none;">
+                <div class="dead-header">
+                    <strong>صدقة جارية على روح المرحومة</strong>
+                    <span style="font-size:1.4em; font-weight:900; color:#333;">سعاد خليل إبراهيم</span>
+                    <br><small>اللهم تقبل منها واغفر لها</small>
+                </div>
+                <div id="deadDuasContainer"></div>
+            </div>
+
+            <div id="dream" class="tab-content" style="display:none;">
+                <div class="dream-container">
+                    <h3 style="color:var(--dream-color);">مفسر الأحلام الذكي (ابن سيرين)</h3>
+                    <p style="font-size:0.8em; color:var(--text-secondary); margin-bottom:10px;">اكتب حلمك بكلمات واضحة (مثال: رأيت أني أشرب ماء زمزم)</p>
+                    <textarea id="dreamInput" class="dream-input" placeholder="اكتب تفاصيل الحلم هنا..."></textarea>
+                    <button class="dream-btn" onclick="interpretDream()">فسر حلمي الآن ✨</button>
+                    
+                    <div id="dreamResult" class="dream-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<audio id="adhanAudio" preload="none"><source src="https://www.islamcan.com/audio/adhan/azan2.mp3" type="audio/mp3"></audio>
+
+<script>
+    const surahNames = ["الفاتحة","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود","يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون","النور","الفرقان","الشعراء","النمل","القصص","العنكبوت","الروم","لقمان","السجدة","الأحزاب","سبأ","فاطر","يس","الصافات","ص","الزمر","غافر","فصلت","الشورى","الزخرف","الدخان","الجاثية","الأحقاف","محمد","الفتح","الحجرات","ق","الذاريات","الطور","النجم","القمر","الرحمن","الواقعة","الحديد","المجادلة","الحشر","الممتحنة","الصف","الجمعة","المنافقون","التغابن","الطلاق","التحريم","الملك","القلم","الخاقة","المعارج","نوح","الجن","المزمل","المدثر","القيامة","الإنسان","المرسلات","النبأ","النازعات","عبس","التكوير","الإنفطار","المطففين","الانشقاق","البروج","الطارق","الأعلى","الغاشية","الفجر","البلد","الشمس","الليل","الضحى","الشرح","التين","العلق","القدر","البينة","الزلزلة","العاديات","القارعة","التكاثر","العصر","الهمزة","الفيل","قريش","الماعون","الكوثر","الكافرون","النصر","المسد","الإخلاص","الفلق","الناس"];
+
+    // قائمة الأسماء مع الشرح (تمت إضافتها)
+    const namesOfAllah = [
+        {n: "الله", d: "لفظ الجلالة، الاسم الجامع لصفات الألوهية."},
+        {n: "الرحمن", d: "ذو الرحمة الشاملة لجميع الخلائق في الدنيا."},
+        {n: "الرحيم", d: "ذو الرحمة الخاصة بالمؤمنين في الآخرة."},
+        {n: "الملك", d: "المالك لكل شيء، المتصرف في ملكه كيف يشاء."},
+        {n: "القدوس", d: "المنزه عن كل نقص وعيب."},
+        {n: "السلام", d: "السالم من كل نقص، والمانح للسلامة."},
+        {n: "المؤمن", d: "المصدق لرسله، والمانح للأمن لخلقه."},
+        {n: "المهيمن", d: "الرقيب الحافظ لكل شيء."},
+        {n: "العزيز", d: "الغالب الذي لا يُقهر."},
+        {n: "الجبار", d: "الذي يجبر الكسير، ويقهر الجبابرة."},
+        {n: "المتكبر", d: "المنفرد بالعظمة والكبرياء."},
+        {n: "الخالق", d: "الموجد للأشياء من العدم."},
+        {n: "البارئ", d: "الذي خلق الخلق بريئاً من التفاوت."},
+        {n: "المصور", d: "الذي صور المخلوقات في أحسن صورة."},
+        {n: "الغفار", d: "كثير المغفرة للذنوب."},
+        {n: "القهار", d: "الذي خضعت له الرقاب وذلت له الجبابرة."},
+        {n: "الوهاب", d: "كثير العطاء بلا عوض."},
+        {n: "الرزاق", d: "المتكفل بأرزاق العباد."},
+        {n: "الفتاح", d: "الذي يفتح أبواب الرحمة والرزق."},
+        {n: "العليم", d: "الذي أحاط علمه بكل شيء."},
+        {n: "القابض", d: "الذي يقبض الرزق والأرواح."},
+        {n: "الباسط", d: "الذي يبسط الرزق لمن يشاء."},
+        {n: "الخافض", d: "الذي يخفض الكفار والظالمين."},
+        {n: "الرافع", d: "الذي يرفع المؤمنين والطائعين."},
+        {n: "المعز", d: "الذي يعز من يشاء بطاعته."},
+        {n: "المذل", d: "الذي يذل من يشاء بمعصيته."},
+        {n: "السميع", d: "الذي لا يخفى عليه مسموع."},
+        {n: "البصير", d: "الذي يبصر كل شيء."},
+        {n: "الحكم", d: "الذي يحكم بين الخلق بالعدل."},
+        {n: "العدل", d: "الذي لا يظلم أحداً."},
+        {n: "اللطيف", d: "الرفيق بعباده، العالم بخفايا الأمور."},
+        {n: "الخبير", d: "العالم ببواطن الأمور."},
+        {n: "الحليم", d: "الذي لا يعاجل بالعقوبة."},
+        {n: "العظيم", d: "الذي لا أعظم منه."},
+        {n: "الغفور", d: "الذي يغفر الذنوب ويستر العيوب."},
+        {n: "الشكور", d: "الذي يجازي على العمل القليل بالثواب الجزيل."},
+        {n: "العلي", d: "الذي علا على كل شيء."},
+        {n: "الكبير", d: "الذي هو أكبر من كل شيء."},
+        {n: "الحفيظ", d: "الذي يحفظ عباده وأعمالهم."},
+        {n: "المقيت", d: "المقتدر على الشيء، وموصل الأقوات."},
+        {n: "الحسيب", d: "الكافي لعباده."},
+        {n: "الجليل", d: "المتصف بصفات الجلال."},
+        {n: "الكريم", d: "كثير الخير والعطاء."},
+        {n: "الرقيب", d: "الذي يراقب أحوال العباد."},
+        {n: "المجيب", d: "الذي يجيب دعوة الداع."},
+        {n: "الواسع", d: "الذي وسع غناه ورحمته كل شيء."},
+        {n: "الحكيم", d: "الذي يضع الأمور في نصابها."},
+        {n: "الودود", d: "المحب لعباده المؤمنين."},
+        {n: "المجيد", d: "الكامل في الشرف والمجد."},
+        {n: "الباعث", d: "الذي يبعث الخلق بعد الموت."},
+        {n: "الشهيد", d: "المطلع على كل شيء."},
+        {n: "الحق", d: "الذي لا شك في وجوده."},
+        {n: "الوكيل", d: "الذي يتوكل عليه العباد."},
+        {n: "القوي", d: "الذي لا يعجزه شيء."},
+        {n: "المتين", d: "الشديد القوة."},
+        {n: "الولي", d: "الناصر والمحب لعباده."},
+        {n: "الحميد", d: "المستحق للحمد والثناء."},
+        {n: "المحصي", d: "الذي أحصى كل شيء عدداً."},
+        {n: "المبدئ", d: "الذي بدأ الخلق."},
+        {n: "المعيد", d: "الذي يعيد الخلق بعد الموت."},
+        {n: "المحيي", d: "الذي يحيي العظام وهي رميم."},
+        {n: "المميت", d: "الذي يميت الأحياء."},
+        {n: "الحي", d: "الذي لا يموت."},
+        {n: "القيوم", d: "القائم بنفسه، المقيم لغيره."},
+        {n: "الواجد", d: "الغني الذي لا يفتقر."},
+        {n: "الماجد", d: "صاحب المجد والشرف."},
+        {n: "الواحد", d: "المتفرد في ذاته وصفاته."},
+        {n: "الأحد", d: "المنفرد الذي لا شبيه له."},
+        {n: "الصمد", d: "الذي تصمد إليه الخلائق في حوائجها."},
+        {n: "القادر", d: "الذي له القدرة المطلقة."},
+        {n: "المقتدر", d: "صاحب القدرة العظيمة."},
+        {n: "المقدم", d: "الذي يقدم ما يشاء."},
+        {n: "المؤخر", d: "الذي يؤخر ما يشاء."},
+        {n: "الأول", d: "الذي ليس قبله شيء."},
+        {n: "الآخر", d: "الذي ليس بعده شيء."},
+        {n: "الظاهر", d: "الذي ليس فوقه شيء."},
+        {n: "الباطن", d: "الذي ليس دونه شيء."},
+        {n: "الوالي", d: "المالك للأشياء المتصرف فيها."},
+        {n: "المتعالي", d: "المنزه عن صفات المخلوقين."},
+        {n: "البر", d: "العطوف الرحيم بعباده."},
+        {n: "التواب", d: "الذي يقبل التوبة عن عباده."},
+        {n: "المنتقم", d: "المعاقب للعصاة."},
+        {n: "العفو", d: "الذي يمحو السيئات."},
+        {n: "الرؤوف", d: "الشديد الرحمة."},
+        {n: "مالك الملك", d: "الذي يؤتي الملك من يشاء."},
+        {n: "ذو الجلال والإكرام", d: "صاحب العظمة والإحسان."},
+        {n: "المقسط", d: "العادل في حكمه."},
+        {n: "الجامع", d: "الذي يجمع الخلائق ليوم لا ريب فيه."},
+        {n: "الغني", d: "الذي استغنى عن الخلق."},
+        {n: "المغني", d: "الذي يغني من يشاء."},
+        {n: "المانع", d: "الذي يمنع العطاء عمن يشاء."},
+        {n: "الضار", d: "المقدر للضرر ابتلاءً."},
+        {n: "النافع", d: "المقدر للنفع."},
+        {n: "النور", d: "الهادي لنوره، المنور للسماوات والأرض."},
+        {n: "الهادي", d: "المرشد لعباده."},
+        {n: "البديع", d: "مبدع السماوات والأرض بلا مثال سابق."},
+        {n: "الباقي", d: "الذي لا يفنى."},
+        {n: "الوارث", d: "الذي يرث الأرض ومن عليها."},
+        {n: "الرشيد", d: "الذي يرشد الخلق لمصالحهم."},
+        {n: "الصبور", d: "الذي لا يعاجل العصاة بالعقوبة."}
+    ];
+
+    const deadDuas = [
+        "اللهم اغفر لحينا وميتنا، وشاهدنا وغائبنا، وصغيرنا وكبيرنا، وذكرنا وأنثانا",
+        "اللهم من أحييته منا فأحيه على الإسلام، ومن توفيته منا فتوفه على الإيمان",
+        "اللهم اغفر لسعاد خليل إبراهيم وارحمها، وعافها واعف عنها، وأكرم نزلها، ووسع مدخلها",
+        "اللهم اغسلها بالماء والثلج والبرد، ونقها من الخطايا كما ينقى الثوب الأبيض من الدنس",
+        "اللهم أبدلها داراً خيراً من دارها، وأهلاً خيراً من أهلها، وزوجاً خيراً من زوجها",
+        "اللهم أدخلها الجنة، وأعذها من عذاب القبر، ومن عذاب النار",
+        "اللهم إن كانت محسنة فزد في حسناتها، وإن كانت مسيئة فتجاوز عن سيئاتها",
+        "اللهم آنس وحشتها، وارحم غربتها، وأنر ظلمتها",
+        "اللهم اجعل قبرها روضة من رياض الجنة، ولا تجعله حفرة من حفر النار",
+        "اللهم يمن كتابها، ويسر حسابها، وثقل بالحسنات ميزانها",
+        "اللهم اجعل عن يمينها نوراً، وعن شمالها نوراً، ومن أمامها نوراً، ومن فوقها نوراً",
+        "اللهم انظر إليها نظرة رضا، فإن من تنظر إليه نظرة رضا لا تعذبه أبداً",
+        "اللهم أسكنها فسيح الجنان، واغفر لها يا رحمن، وارحمها يا رحيم",
+        "اللهم احشرها مع المتقين إلى الرحمن وفداً",
+        "اللهم احشرها مع أصحاب اليمين، واجعل تحيتها سلام لك من أصحاب اليمين"
+    ];
+
+    const dreamDictionary = {
+        "ماء": "الماء في المنام يدل على حياة طيبة وعلم وصفاء، وقد يدل على الرزق.",
+        "بحر": "البحر سلطان قوي، ومن رأى أنه يخوض فيه فإنه يدخل في عمل مع ذي سلطان.",
+        "مطر": "المطر رحمة من الله ورزق واسع إذا لم يكن فيه ضرر.",
+        "نار": "النار قد تدل على الفتنة أو الحرب، وأحياناً تدل على الهداية إذا كانت للاضاءة.",
+        "ثعبان": "الثعبان عدو مكاتم، ولدغته نال مكروه من عدو.",
+        "حية": "الحية عدو، ومن قتلها ظفر بعدوه.",
+        "موت": "الموت في المنام قد يدل على رد الودائع أو خلاص المريض، وأحياناً طول عمر.",
+        "بكى": "البكاء بغير صراخ فرج وسرور وزوال هم.",
+        "ضحك": "الضحك بصوت عال قد يدل على حزن، والابتسامة خير وسرور.",
+        "صلاة": "الصلاة قضاء دين وأداء أمانة وإقامة فريضة.",
+        "مسجد": "المسجد رجل عالم، ودخوله أمن واطمئنان.",
+        "طيران": "الطيران سفر أو تغيير في الحال، ورفعة في القدر.",
+        "سقوط": "السقوط تغيير من حال إلى حال، وقد يكون غير محمود.",
+        "زواج": "الزواج عناية من الله، وسعي في منصب أو دين.",
+        "سمك": "السمك رزق وغنيمة إذا كان كبيراً وكثيراً.",
+        "لحم": "اللحم المطبوخ رزق، والنيء قد يدل على غيبة.",
+        "أسنان": "الأسنان هم الأهل والأقارب، وسقوطها قد يدل على طول عمر الرائي أو فقد عزيز.",
+        "ذهب": "الذهب قد يدل على هم وحزن للرجل، وزينة للمرأة.",
+        "فلوس": "المال في المنام قد يدل على كلام وقيل وقال، وأحياناً فرج بعد ضيق.",
+        "مال": "المال نكد وتعب، والعثور عليه مشاكل بسيطة يعقبها فرج.",
+        "كلب": "الكلب رجل سفيه أو عدو ضعيف.",
+        "قطة": "القطة خادم أو لص من أهل البيت.",
+        "سفر": "السفر انتقال من حال إلى حال.",
+        "سيارة": "السيارة تدل على مسيرة حياة الرائي وتيسير أموره."
+    };
+
+    const tasbeehList = [
+        "سبحان الله", "الحمد لله", "لا إله إلا الله", "الله أكبر",
+        "أستغفر الله", "لا حول ولا قوة إلا بالله", "سبحان الله وبحمده",
+        "سبحان الله العظيم", "اللهم صل على محمد", "لا إله إلا الله وحده لا شريك له"
+    ];
+    let tasbeehIndex = 0;
+
+    const azkarData = {
+        morning: [
+            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
+            {t: "قُلْ هُوَ اللَّهُ أَحَدٌ... (الإخلاص)", c: 3},
+            {t: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ... (الفلق)", c: 3},
+            {t: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ... (الناس)", c: 3},
+            {t: "أَصْـبَحْنا وَأَصْـبَحَ المُـلْكُ لله وَالحَمدُ لله، لا إلهَ إلاّ اللّهُ وَحدَهُ لا شَريكَ لهُ...", c: 1},
+            {t: "اللّهُـمَّ بِكَ أَصْـبَحْنا وَبِكَ أَمْسَـينا، وَبِكَ نَحْـيا وَبِكَ نَمُـوتُ وَإِلَـيْكَ النُّـشُور", c: 1},
+            {t: "اللّهُـمَّ إِنِّـي أَصْبَـحْتُ أُشْـهِدُك... (4 مرات)", c: 4},
+            {t: "اللّهُـمَّ ما أَصْبَـَحَ بي مِـنْ نِعْـمَةٍ... (مرة واحدة)", c: 1},
+            {t: "اللّهُـمَّ عافِـني في بَدَنـي... (3 مرات)", c: 3},
+            {t: "حَسْبِـيَ اللّهُ لا إلهَ إلاّ هُوَ عَلَـيهِ تَوَكَّـلتُ... (7 مرات)", c: 7},
+            {t: "بِسـمِ اللهِ الذي لا يَضُـرُّ مَعَ اسمِـهِ شَيءٌ... (3 مرات)", c: 3},
+            {t: "رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً... (3 مرات)", c: 3},
+            {t: "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ...", c: 1},
+            {t: "سُبْحـانَ اللهِ وَبِحَمْـدِهِ (100 مرة)", c: 100},
+            {t: "لا إله إلا الله وحده لا شريك له... (10 مرات)", c: 10},
+            {t: "أَسْتَغْفِرُ اللهَ وَأَتُوبُ إِلَيْهِ (100 مرة)", c: 100}
+        ],
+        evening: [
+            {t: "آية الكرسي...", c: 1},
+            {t: "المعوذات (3 مرات)", c: 3},
+            {t: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ...", c: 1},
+            {t: "اللّهُـمَّ بِكَ أَمْسَـينا وَبِكَ أَصْـبَحْنا...", c: 1},
+            {t: "أَعـوذُ بِكَلِمـاتِ اللهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق", c: 3},
+            {t: "اللّهُـمَّ إِنِّـي أَمْسَيْتُ أُشْـهِدُك... (4 مرات)", c: 4},
+            {t: "سُبْحـانَ اللهِ وَبِحَمْـدِهِ (100 مرة)", c: 100}
+        ],
+        generalDuas: [
+            {t: "اللهم اغفر للمؤمنين والمؤمنات والمسلمين والمسلمات الأحياء منهم والأموات", c: 1},
+            {t: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", c: 1},
+            {t: "اللهم إنك عفو تحب العفو فاعف عنا", c: 1},
+            {t: "اللهم ارزقنا ليلة القدر", c: 1}
+        ]
+    };
+
+    const cities = {
+        "Baghdad": {lat: 33.3128, lon: 44.3615}, "Ramadi": {lat: 33.4319, lon: 43.2936},
+        "Fallujah": {lat: 33.3506, lon: 43.7759}, "Mosul": {lat: 36.3489, lon: 43.1577},
+        "Basra": {lat: 30.5081, lon: 47.7835}, "Erbil": {lat: 36.1926, lon: 44.0006},
+        "Kirkuk": {lat: 35.4681, lon: 44.3922}, "Sulaymaniyah": {lat: 35.5577, lon: 45.4361},
+        "Duhok": {lat: 36.8525, lon: 42.9941}, "Karbala": {lat: 32.6160, lon: 44.0249},
+        "Najaf": {lat: 32.0096, lon: 44.3387}, "Nasiriyah": {lat: 31.0580, lon: 46.2573},
+        "Amarah": {lat: 31.8363, lon: 47.1458}, "Kut": {lat: 32.5056, lon: 45.8246},
+        "Diwaniyah": {lat: 31.9943, lon: 44.9243}, "Hilla": {lat: 32.4728, lon: 44.4312},
+        "Baqubah": {lat: 33.7416, lon: 44.6233}, "Samawah": {lat: 31.3195, lon: 45.2849}
+    };
+
+    const scrollingDuasText = [
+        "اللهم اغفر لسعاد خليل إبراهيم وارحمها", "اللهم اجعل قبرها روضة من رياض الجنة",
+        "اللهم آنس وحشتها وارحم غربتها", "اللهم أظلها تحت ظل عرشك يوم لا ظل إلا ظلك",
+        "اللهم يمن كتابها ويسر حسابها", "اللهم اجعل هذا العمل صدقة جارية لها وللمسلمين"
+    ];
+
+    let todayTimes = { fajr: null, dhuhr: null, asr: null, maghrib: null, isha: null };
+    let firstRamadanDate = null;
+    let adhanEnabled = false;
+    let countdownInterval;
+    let rosaryCounter = 0;
+    let customLat = null, customLon = null;
+    let currentSurahId = 0;
+
+    function init() {
+        document.getElementById('year').innerText = new Date().getFullYear();
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeBtn').innerText = '☀️';
+        }
+        let html = '';
+        for(let i=0; i<30; i++) { scrollingDuasText.forEach(d => html += `<span class="dua-item">🤲 ${d}</span>`); }
+        document.getElementById('scrollingDuas').innerHTML = html;
+        generateQR();
+        renderAzkar();
+        initQuran();
+        renderNamesOfAllah();
+        renderDeadDuas();
+        updateVisitorCount();
+        if(localStorage.getItem("ramadan_city")) document.getElementById("city").value = localStorage.getItem("ramadan_city");
+        loadTimes(false);
+        window.onclick = (e) => { if(e.target == document.getElementById('azkarModal')) closeModal(); }
+        
+        const modalBody = document.getElementById('modalBody');
+        const quranControls = document.getElementById('quranControls');
+        let lastScrollTop = 0;
+
+        modalBody.addEventListener('scroll', function() {
+            if(document.getElementById('quran').style.display !== 'none') {
+                let scrollTop = modalBody.scrollTop;
+                if(scrollTop > lastScrollTop && scrollTop > 50) {
+                    quranControls.classList.add('hidden-bar');
+                } else {
+                    quranControls.classList.remove('hidden-bar');
+                }
+                lastScrollTop = scrollTop;
+            }
+        });
+    }
+
+    function renderNamesOfAllah() {
+        const grid = document.getElementById('namesGrid');
+        let html = '';
+        namesOfAllah.forEach(item => {
+            html += `<div class="name-card"><span class="allah-name">${item.n}</span><span class="name-meaning">${item.d}</span></div>`;
+        });
+        grid.innerHTML = html;
+    }
+
+    function renderDeadDuas() {
+        const container = document.getElementById('deadDuasContainer');
+        let html = '';
+        deadDuas.forEach(dua => {
+            html += `<div class="dead-dua-card">${dua}</div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function interpretDream() {
+        const input = document.getElementById('dreamInput').value.trim();
+        const resultBox = document.getElementById('dreamResult');
+        
+        if (!input) {
+            alert("يرجى كتابة الحلم أولاً");
+            return;
+        }
+
+        resultBox.style.display = 'block';
+        resultBox.innerHTML = '⏳ جاري تحليل الحلم...';
+
+        setTimeout(() => {
+            let interpretation = "لم أجد تفسيراً دقيقاً لكلمة مفتاحية في هذا الحلم. يفضل استشارة عالم، وخيراً رأيت وشراً كفيت إن شاء الله.";
+            
+            for (const [key, value] of Object.entries(dreamDictionary)) {
+                if (input.includes(key)) {
+                    interpretation = `<strong>الرمز المستخلص: ${key}</strong><br>${value}<br><br><small>ملاحظة: هذا تفسير استرشادس عام والله أعلى وأعلم.</small>`;
+                    break;
+                }
+            }
+            
+            resultBox.innerHTML = `<h4>تفسير الحلم المحتمل:</h4>${interpretation}`;
+        }, 1000); 
+    }
+
+    function initQuran() {
+        const select = document.getElementById('surahSelect');
+        select.innerHTML = '<option value="" disabled selected>اختر السورة...</option>';
+        surahNames.forEach((name, index) => {
+            select.innerHTML += `<option value="${index + 1}">${index + 1}. ${name}</option>`;
+        });
+    }
+
+    async function fetchSurah(surahId) {
+        if(!surahId) return;
+        currentSurahId = surahId;
+        const loader = document.getElementById('quranLoader');
+        const textArea = document.getElementById('quranText');
+        
+        loader.style.display = 'block';
+        textArea.innerHTML = '';
+        textArea.style.opacity = '0.5';
+
+        try {
+            const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahId}`);
+            if(!response.ok) throw new Error("Network response was not ok");
+            const data = await response.json();
+            
+            if(data.code === 200) {
+                renderSurahText(data.data);
+            } else {
+                textArea.innerHTML = '<p style="color:red; text-align:center;">حدث خطأ في تحميل السورة.</p>';
+            }
+        } catch (err) {
+            console.error(err);
+            textArea.innerHTML = '<p style="color:red; text-align:center;">تعذر الاتصال بالخادم. يرجى التحقق من الإنترنت.</p>';
+        } finally {
+            loader.style.display = 'none';
+            textArea.style.opacity = '1';
+        }
+    }
+
+    function renderSurahText(surahData) {
+        const textArea = document.getElementById('quranText');
+        let html = `<h2 class="surah-title">سورة ${surahData.name}</h2>`;
+        
+        if(surahData.number !== 9) {
+            html += `<span class="basmala">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>`;
+        }
+
+        let fullText = "";
+        surahData.ayahs.forEach(ayah => {
+            let text = ayah.text;
+            if(surahData.number !== 1 && surahData.number !== 9 && ayah.numberInSurah === 1) {
+                text = text.replace("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ", "");
+            }
+            fullText += `${text} <span class="ayah-number">${ayah.numberInSurah}</span> `;
+        });
+
+        textArea.innerHTML = html + `<p style="text-align: justify; line-height: 2.2;">${fullText}</p>`;
+    }
+
+    function saveBookmark() {
+        if(currentSurahId) {
+            localStorage.setItem('savedSurah', currentSurahId);
+            alert(`✅ تم حفظ مكان القراءة عند سورة: ${surahNames[currentSurahId-1]}`);
+        } else {
+            alert("⚠️ الرجاء فتح سورة أولاً للحفظ.");
+        }
+    }
+
+    function loadBookmark() {
+        const saved = localStorage.getItem('savedSurah');
+        if(saved) {
+            document.getElementById('surahSelect').value = saved;
+            fetchSurah(saved);
+        } else {
+            alert("⚠️ لا يوجد حفظ سابق.");
+        }
+    }
+
+    function cycleTasbeeh() {
+        tasbeehIndex = (tasbeehIndex + 1) % tasbeehList.length;
+        document.getElementById('currentTasbeeh').innerText = tasbeehList[tasbeehIndex];
+    }
+
+    function increaseRosary() { 
+        rosaryCounter++; 
+        if (rosaryCounter > 33) {
+            rosaryCounter = 0;
+            cycleTasbeeh();
+        }
+        document.getElementById('rosaryCount').innerText = rosaryCounter; 
+    }
+
+    function resetRosary() { 
+        if(confirm("هل تريد تصفير العداد؟")) { 
+            rosaryCounter = 0; 
+            document.getElementById('rosaryCount').innerText = 0; 
+        } 
+    }
+
+    function updateVisitorCount() {
+        const namespace = 'ramadan-sadaka-suad-v2';
+        const key = 'visits_main';
+        const box = document.getElementById('visitorBox');
+        
+        fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        .then(res => {
+            if (!res.ok) throw new Error("Service Unavailable");
+            return res.json();
+        })
+        .then(res => {
+            document.getElementById('visitCount').innerText = res.value;
+            box.style.display = 'inline-block';
+        })
+        .catch(err => {
+            console.log("Visitor counter hidden due to network/adblock:", err);
+            box.style.display = 'none';
+        });
+    }
+
+    function renderAzkar() {
+        const renderGroup = (id, data) => {
+            let html = '';
+            data.forEach(z => {
+                html += `<div class="zekr-item"><div class="zekr-text">${z.t}</div>${z.c > 1 ? `<span class="zekr-count">${z.c} مرات</span>` : ''}</div>`;
+            });
+            document.getElementById(id).innerHTML = html;
+        };
+        renderGroup('morning', azkarData.morning);
+        renderGroup('evening', azkarData.evening);
+        renderGroup('generalDuas', azkarData.generalDuas);
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.getElementById('themeBtn').innerText = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    function generateQR() { document.getElementById("qrcode").innerHTML = ""; new QRCode(document.getElementById("qrcode"), { text: window.location.href, width: 90, height: 90, colorDark : "#1a5f7a", correctLevel : QRCode.CorrectLevel.L }); }
+    function formatTime(t) { if (!t) return ""; let [h, m] = t.split(" ")[0].split(":"); h = parseInt(h); const ampm = h >= 12 ? 'م' : 'ص'; h = h % 12 || 12; return `${h}:${m}<span style="font-size:0.8em">${ampm}</span>`; }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            document.getElementById("city").disabled = true;
+            alert("جاري تحديد موقعك... يرجى الانتظار.");
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    customLat = position.coords.latitude;
+                    customLon = position.coords.longitude;
+                    alert("✅ تم تحديد موقعك بنجاح! سيتم تحديث أوقات الصلاة.");
+                    loadTimes(true);
+                    document.getElementById("city").disabled = false;
+                    const citySelect = document.getElementById("city");
+                    for (let i = 0; i < citySelect.options.length; i++) {
+                        if (citySelect.options[i].value === "GPS") citySelect.remove(i);
+                    }
+                    let opt = document.createElement('option');
+                    opt.value = "GPS";
+                    opt.innerHTML = "📍 موقعي الحالي";
+                    opt.selected = true;
+                    citySelect.appendChild(opt);
+                },
+                (error) => {
+                    let msg = "تعذر تحديد الموقع.";
+                    if(error.code == 1) msg = "لقد رفضت إذن الموقع. يرجى تفعيله من إعدادات المتصفح.";
+                    alert(msg);
+                    document.getElementById("city").disabled = false;
+                },
+                { timeout: 10000 }
+            );
+        } else { alert("المتصفح لا يدعم تحديد الموقع."); }
+    }
+
+    async function loadTimes(forceRefresh = false) {
+        if (window.location.protocol === 'file:') { document.getElementById("pcWarning").style.display = "block"; }
+        const cityKey = document.getElementById("city").value;
+        const adj = document.getElementById("hijriAdj").value;
+        
+        let lat, lon;
+        if(cityKey === "GPS" && customLat) { lat = customLat; lon = customLon; } 
+        else { localStorage.setItem("ramadan_city", cityKey); lat = cities[cityKey].lat; lon = cities[cityKey].lon; }
+        
+        const cacheKey = `ramadan_cache_${lat}_${lon}_${adj}_${new Date().getFullYear()}`;
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = '<tr><td colspan="7" style="padding:20px;">⏳ جاري حساب وتجهيز الجدول...</td></tr>';
+
+        if(!forceRefresh) {
+            const cached = localStorage.getItem(cacheKey);
+            if(cached) {
+                const data = JSON.parse(cached);
+                if(new Date().getTime() - data.timestamp < 86400000) { renderTable(data.days); return; }
+            }
+        }
+
+        const now = new Date();
+        const year = now.getFullYear();
+        const currentMonth = now.getMonth() + 1;
+        let allRamadanDays = [];
+        let ramadanFound = false;
+
+        for (let i = 0; i < 3; i++) {
+            let m = currentMonth + i;
+            let y = year;
+            if (m > 12) { m -= 12; y++; } 
+            
+            const url = `https://api.aladhan.com/v1/calendar?latitude=${lat}&longitude=${lon}&method=4&month=${m}&year=${y}&adjustment=${adj}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if(data.data) {
+                    const days = data.data.filter(d => d.date.hijri.month.en === "Ramaḍān");
+                    if (days.length > 0) { ramadanFound = true; allRamadanDays = allRamadanDays.concat(days); }
+                }
+            } catch (err) { console.error("Error fetching times:", err); }
+        }
+
+        if (ramadanFound && allRamadanDays.length > 0) {
+            localStorage.setItem(cacheKey, JSON.stringify({ timestamp: new Date().getTime(), days: allRamadanDays }));
+            renderTable(allRamadanDays);
+        } else { tbody.innerHTML = '<tr><td colspan="7" style="padding:20px; color:red;">لم يتم العثور على بيانات رمضان، أو لا يوجد اتصال بالإنترنت.</td></tr>'; }
+    }
+
+    function renderTable(days) {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+        const now = new Date();
+        const todayNum = now.getDate();
+        const thisMonth = now.getMonth() + 1;
+        todayTimes = { fajr: null, dhuhr:null, asr:null, maghrib: null, isha:null };
+        let isTodayRamadan = false;
+
+        if(days.length > 0) {
+            const firstDay = days[0];
+            const [d, m, y] = firstDay.date.gregorian.date.split('-');
+            firstRamadanDate = new Date(`${m}/${d}/${y}`);
+        }
+
+        days.forEach(d => {
+            const dayMonth = parseInt(d.date.gregorian.month.number);
+            const dayNum = parseInt(d.date.gregorian.day);
+            const isToday = (dayMonth === thisMonth && dayNum === todayNum);
+
+            if(isToday) {
+                isTodayRamadan = true;
+                todayTimes.fajr = d.timings.Fajr.split(" ")[0];
+                todayTimes.dhuhr = d.timings.Dhuhr.split(" ")[0];
+                todayTimes.asr = d.timings.Asr.split(" ")[0];
+                todayTimes.maghrib = d.timings.Maghrib.split(" ")[0];
+                todayTimes.isha = d.timings.Isha.split(" ")[0];
+            }
+
+            const row = `
+            <tr class="${isToday ? 'active-day' : ''}">
+                <td class="day-cell">${d.date.hijri.day} رمضان <br><span class="gregorian-date">${dayNum}/${dayMonth}</span></td>
+                <td>${formatTime(d.timings.Imsak)}</td>
+                <td style="color:var(--primary);font-weight:bold">${formatTime(d.timings.Fajr)}</td>
+                <td>${formatTime(d.timings.Dhuhr)}</td>
+                <td>${formatTime(d.timings.Asr)}</td>
+                <td style="color:var(--accent);font-weight:bold">${formatTime(d.timings.Maghrib)}</td>
+                <td>${formatTime(d.timings.Isha)}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+        startCountdown(isTodayRamadan);
+    }
+
+    function startCountdown(isRamadan) {
+        if(countdownInterval) clearInterval(countdownInterval);
+        const timerLabel = document.getElementById("timerLabel");
+        
+        countdownInterval = setInterval(() => {
+            const now = new Date();
+            const nowTime = now.getTime();
+            let target = 0, label = "", showIftarDua = false;
+
+            if (!isRamadan) {
+                if(firstRamadanDate) {
+                    target = firstRamadanDate.getTime();
+                    label = "⏳ متبقي على شهر رمضان";
+                    if(nowTime > target) { label = "أهلاً رمضان"; target = nowTime; }
+                } else { label = "جاري البحث عن هلال رمضان..."; target = nowTime; }
+            } else {
+                const getT = (t) => { const d = new Date(); const [h,m] = t.split(":"); d.setHours(h,m,0); return d.getTime(); };
+                const times = [{t: getT(todayTimes.fajr), l: "الفجر"}, {t: getT(todayTimes.dhuhr), l: "الظهر"}, {t: getT(todayTimes.asr), l: "العصر"}, {t: getT(todayTimes.maghrib), l: "المغرب"}, {t: getT(todayTimes.isha), l: "العشاء"}];
+                let nextPrayer = times.find(p => p.t > nowTime);
+                if (nextPrayer) { target = nextPrayer.t; label = `🕌 متبقي على أذان ${nextPrayer.l}`; if(nextPrayer.l === "المغرب") showIftarDua = false; } 
+                else { label = "🌙 متبقي على فجر الغد"; let d = new Date(); d.setDate(d.getDate() + 1); const [h,m] = todayTimes.fajr.split(":"); d.setHours(h,m,0); target = d.getTime(); showIftarDua = true; }
+            }
+
+            document.getElementById("iftarDua").style.display = showIftarDua ? 'block' : 'none';
+            const diff = target - nowTime;
+            if(diff < 0) { document.getElementById("daysVal").innerText = "00"; return; }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            timerLabel.innerText = label;
+            document.getElementById("daysVal").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hoursVal").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minsVal").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("secsVal").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+    }
+
+    function enableAdhan() { const audio = document.getElementById("adhanAudio"); audio.play().then(() => { audio.pause(); audio.currentTime=0; adhanEnabled=true; alert("تم تفعيل التنبيه بصوت الأذان."); checkAdhanLoop(); }).catch(() => alert("يجب النقر على الصفحة أولاً لتفعيل الصوت")); }
+    function checkAdhanLoop() { setInterval(() => { if(!adhanEnabled || !todayTimes.maghrib) return; const now = new Date(); const t = `${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`; if(t === todayTimes.maghrib) { document.getElementById("adhanAudio").play(); adhanEnabled = false; } }, 1000); }
+    function shareWhatsapp() { window.open(`https://wa.me/?text=${encodeURIComponent("إمساكية رمضان (صدقة جارية عن روح المرحومة سعاد خليل إبراهيم): " + window.location.href)}`, '_blank'); }
+    function openModal() { document.getElementById('azkarModal').style.display = 'block'; }
+    function closeModal() { document.getElementById('azkarModal').style.display = 'none'; }
+    function switchTab(id, btn) { 
+        document.querySelectorAll('.tab-content').forEach(d => d.style.display='none'); 
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
+        document.getElementById(id).style.display='block'; 
+        btn.classList.add('active'); 
+    }
+
+    init();
+</script>
+
+</body>
+</html>
