@@ -821,7 +821,16 @@
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 
-    function generateQR() { document.getElementById("qrcode").innerHTML = ""; new QRCode(document.getElementById("qrcode"), { text: window.location.href, width: 90, height: 90, colorDark : "#1a5f7a", correctLevel : QRCode.CorrectLevel.L }); }
+   function generateQR() { 
+    document.getElementById("qrcode").innerHTML = ""; 
+    new QRCode(document.getElementById("qrcode"), { 
+        text: "https://HUMAM7.github.io/ramadan-kareem", 
+        width: 90, 
+        height: 90, 
+        colorDark : "#1a5f7a", 
+        correctLevel : QRCode.CorrectLevel.L 
+    }); 
+}
     function formatTime(t) { if (!t) return ""; let [h, m] = t.split(" ")[0].split(":"); h = parseInt(h); const ampm = h >= 12 ? 'م' : 'ص'; h = h % 12 || 12; return `${h}:${m}<span style="font-size:0.8em">${ampm}</span>`; }
 
     function getLocation() {
@@ -991,8 +1000,11 @@
 
     function enableAdhan() { const audio = document.getElementById("adhanAudio"); audio.play().then(() => { audio.pause(); audio.currentTime=0; adhanEnabled=true; alert("تم تفعيل التنبيه بصوت الأذان."); checkAdhanLoop(); }).catch(() => alert("يجب النقر على الصفحة أولاً لتفعيل الصوت")); }
     function checkAdhanLoop() { setInterval(() => { if(!adhanEnabled || !todayTimes.maghrib) return; const now = new Date(); const t = `${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`; if(t === todayTimes.maghrib) { document.getElementById("adhanAudio").play(); adhanEnabled = false; } }, 1000); }
-    function shareWhatsapp() { window.open(`https://wa.me/?text=${encodeURIComponent("إمساكية رمضان (صدقة جارية عن روح المرحومة سعاد خليل إبراهيم): " + window.location.href)}`, '_blank'); }
-    function openModal() { document.getElementById('azkarModal').style.display = 'block'; }
+   function shareWhatsapp() { 
+    var url = "https://HUMAM7.github.io/ramadan-kareem";
+    var text = "إمساكية رمضان (صدقة جارية عن روح المرحومة سعاد خليل إبراهيم): " + url;
+    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text)); 
+}
     function closeModal() { document.getElementById('azkarModal').style.display = 'none'; }
     function switchTab(id, btn) { 
         document.querySelectorAll('.tab-content').forEach(d => d.style.display='none'); 
@@ -1006,4 +1018,5 @@
 
 </body>
 </html>
+
 
