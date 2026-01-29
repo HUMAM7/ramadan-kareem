@@ -863,36 +863,39 @@
     function formatTime(t) { if (!t) return ""; let [h, m] = t.split(" ")[0].split(":"); h = parseInt(h); const ampm = h >= 12 ? 'م' : 'ص'; h = h % 12 || 12; return `${h}:${m}<span style="font-size:0.8em">${ampm}</span>`; }
 
     function getLocation() {
-        if (navigator.geolocation) {
-            document.getElementById("city").disabled = true;
-            alert("جاري تحديد موقعك... يرجى الانتظار.");
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    customLat = position.coords.latitude;
-                    customLon = position.coords.longitude;
-                    alert("✅ تم تحديد موقعك بنجاح! سيتم تحديث أوقات الصلاة.");
-                    loadTimes(true);
-                    document.getElementById("city").disabled = false;
-                    const citySelect = document.getElementById("city");
-                    for (let i = 0; i < citySelect.options.length; i++) {
-                        if (citySelect.options[i].value === "GPS") citySelect.remove(i);
-                    }
-                    let opt = document.createElement('option');
-                    opt.value = "GPS";
-                    opt.innerHTML = "📍 موقعي الحالي";
-                    opt.selected = true;
-                    citySelect.appendChild(opt);
-                },
-                (error) => {
-                    let msg = "تعذر تحديد الموقع.";
-                    if(error.code == 1) msg = "لقد رفضت إذن الموقع. يرجى تفعيله من إعدادات المتصفح.";
-                    alert(msg);
-                    document.getElementById("city").disabled = false;
-                },
-                { timeout: 10000 }
-            );
-        } else { alert("المتصفح لا يدعم تحديد الموقع."); }
+    if (navigator.geolocation) {
+        var cityElem = document.getElementById("city");
+        cityElem.disabled = true;
+        alert("جاري تحديد موقعك وحفظه... يرجى الانتظار ⏳");
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                // 1. تحديد الإحداثيات
+                customLat = position.coords.latitude;
+                customLon = position.coords.longitude;
+
+                // 2. (الجديد) حفظ الموقع في ذاكرة الهاتف الدائمة
+                localStorage.setItem('savedLat', customLat);
+                localStorage.setItem('savedLon', customLon);
+                localStorage.setItem('savedType', 'GPS');
+
+                // 3. تحديث التطبيق
+                alert("تم تحديد موقعك وحفظه بنجاح! ✅");
+                loadTimes(true);
+                
+                // تحديث القائمة لاختيار GPS
+                cityElem.disabled = false;
+                cityElem.value = "GPS";
+            },
+            (error) => {
+                alert("تعذر تحديد الموقع. تأكد من تفعيل GPS.");
+                cityElem.disabled = false;
+            }
+        );
+    } else {
+        alert("هذا الجهاز لا يدعم تحديد الموقع.");
     }
+}
 
     async function loadTimes(forceRefresh = false) {
         if (window.location.protocol === 'file:') { document.getElementById("pcWarning").style.display = "block"; }
@@ -1068,10 +1071,27 @@ function closeModal() {
     }
 
     init();
+    // --- كود الذاكرة: استرجاع الموقع المحفوظ عند فتح التطبيق ---
+window.addEventListener('load', function() {
+    // هل يوجد موقع GPS محفوظ سابقاً؟
+    if (localStorage.getItem('savedType') === 'GPS') {
+        // نعم، استرجعه فوراً
+        customLat = parseFloat(localStorage.getItem('savedLat'));
+        customLon = parseFloat(localStorage.getItem('savedLon'));
+        
+        // تحديث القائمة والأوقات تلقائياً
+        var citySelect = document.getElementById('city');
+        if(citySelect) citySelect.value = 'GPS';
+        
+        // تشغيل الأوقات بناءً على الموقع المحفوظ
+        loadTimes(true); 
+    }
+});
 </script>
 
 </body>
 </html>
+
 
 
 
