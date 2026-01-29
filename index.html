@@ -220,7 +220,7 @@
     
     <a href="https://drive.google.com/file/d/1N0XJKmeAoVurGLesajdTbZ-P0X9ytrPd/view?usp=drivesdk..." class="btn-download" target="_blank" style="position: absolute; left: 20px; top: 20px; text-decoration: none;">📥 تحميل التطبيق</a>
 
-    <button class="theme-toggle" onclick="toggle()" id="Btn" style="position: absolute; right: 20px; top: 20px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 1000;">🌙</button>
+    <button class="theme-toggle" onclick="toggle()" id="Btn" style="position: absolute; right: 20px; top: 20px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 1000;">☀️</button>
 
     <div class="header-section">
         <h1>🌙 إمساكية شهر رمضان</h1>
@@ -628,7 +628,7 @@
         document.getElementById('year').innerText = new Date().getFullYear();
         if(localStorage.getItem('') === 'dark') {
             document.body.classList.add('dark-mode');
-            document.getElementById('Btn').innerText = '☀️';
+            document.getElementById('Btn').innerText = '🌙';
         }
         let html = '';
         for(let i=0; i<30; i++) { scrollingDuasText.forEach(d => html += `<span class="dua-item">🤲 ${d}</span>`); }
@@ -837,7 +837,7 @@
     function  toggle() {
         document.body.classList. toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.getElementById('Btn').innerText = isDark ? '☀️' : '🌙';
+        document.getElementById('Btn').innerText = isDark ? '🌙' : '☀️';
         localStorage.setItem('', isDark ? 'dark' : 'light');
     }
 
@@ -1038,6 +1038,7 @@
 
 </body>
 </html>
+
 
 
 
