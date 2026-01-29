@@ -1027,25 +1027,29 @@
 }
 
 function openModal() {
-    // إظهار نافذة الأذكار
+    // 1. فتح نافذة الأذكار
     document.getElementById('azkarModal').style.display = 'block';
 
-    // إخفاء زر التحميل (باستخدام الهوية الجديدة)
-    document.getElementById('downloadBtn').style.display = 'none';
-    
-    // إخفاء زر الوضع المظلم
-    if(document.getElementById('Btn')) document.getElementById('Btn').style.display = 'none';
+    // 2. البحث عن زر التحميل (عن طريق رابط الدرايف) وإخفائه فوراً
+    var dlBtn = document.querySelector('a[href*="drive.google.com"]');
+    if(dlBtn) { dlBtn.style.display = 'none'; }
+
+    // 3. إخفاء زر الوضع المظلم أيضاً
+    var themeBtn = document.getElementById('Btn');
+    if(themeBtn) { themeBtn.style.display = 'none'; }
 }
 
 function closeModal() {
-    // إغلاق النافذة
+    // 1. إغلاق النافذة
     document.getElementById('azkarModal').style.display = 'none';
 
-    // إعادة إظهار زر التحميل
-    document.getElementById('downloadBtn').style.display = 'block';
+    // 2. إعادة إظهار زر التحميل
+    var dlBtn = document.querySelector('a[href*="drive.google.com"]');
+    if(dlBtn) { dlBtn.style.display = 'block'; }
 
-    // إعادة إظهار زر الوضع المظلم
-    if(document.getElementById('Btn')) document.getElementById('Btn').style.display = 'block';
+    // 3. إعادة إظهار زر الوضع المظلم
+    var themeBtn = document.getElementById('Btn');
+    if(themeBtn) { themeBtn.style.display = 'block'; }
 }
     function switchTab(id, btn) { 
         document.querySelectorAll('.tab-content').forEach(d => d.style.display='none'); 
@@ -1059,6 +1063,7 @@ function closeModal() {
 
 </body>
 </html>
+
 
 
 
