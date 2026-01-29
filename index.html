@@ -1028,8 +1028,17 @@
 
 function openModal() {
     document.getElementById('azkarModal').style.display = 'block';
+    // كود لإخفاء الأزرار مؤقتاً حتى لا تغطي على الشاشة
+    document.querySelector('.btn-download').style.display = 'none';
+    if(document.getElementById('Btn')) document.getElementById('Btn').style.display = 'none';
 }
-    function closeModal() { document.getElementById('azkarModal').style.display = 'none'; }
+
+function closeModal() {
+    document.getElementById('azkarModal').style.display = 'none';
+    // كود لإرجاع الأزرار عند الخروج
+    document.querySelector('.btn-download').style.display = 'block';
+    if(document.getElementById('Btn')) document.getElementById('Btn').style.display = 'block';
+}
     function switchTab(id, btn) { 
         document.querySelectorAll('.tab-content').forEach(d => d.style.display='none'); 
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
@@ -1042,6 +1051,7 @@ function openModal() {
 
 </body>
 </html>
+
 
 
 
