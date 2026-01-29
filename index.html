@@ -1020,10 +1020,14 @@
 
     function enableAdhan() { const audio = document.getElementById("adhanAudio"); audio.play().then(() => { audio.pause(); audio.currentTime=0; adhanEnabled=true; alert("تم تفعيل التنبيه بصوت الأذان."); checkAdhanLoop(); }).catch(() => alert("يجب النقر على الصفحة أولاً لتفعيل الصوت")); }
     function checkAdhanLoop() { setInterval(() => { if(!adhanEnabled || !todayTimes.maghrib) return; const now = new Date(); const t = `${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`; if(t === todayTimes.maghrib) { document.getElementById("adhanAudio").play(); adhanEnabled = false; } }, 1000); }
-   function shareWhatsapp() { 
+   function shareWhatsapp() {
     var url = "https://HUMAM7.github.io/ramadan-kareem";
     var text = "إمساكية رمضان (صدقة جارية عن روح المرحومة سعاد خليل إبراهيم): " + url;
-    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text)); 
+    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text));
+}
+
+function openModal() {
+    document.getElementById('azkarModal').style.display = 'block';
 }
     function closeModal() { document.getElementById('azkarModal').style.display = 'none'; }
     function switchTab(id, btn) { 
@@ -1038,6 +1042,7 @@
 
 </body>
 </html>
+
 
 
 
