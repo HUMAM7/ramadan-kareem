@@ -218,7 +218,7 @@
 
 <div class="container" style="position: relative; padding-top: 50px;">
     
-    <a href="https://drive.google.com/file/d/1N0XJKmeAoVurGLesajdTbZ-P0X9ytrPd/view?usp=drivesdk..." class="btn-download" target="_blank" style="position: absolute; left: 20px; top: 20px; text-decoration: none;"> تحميل التطبيق 📥</a>
+    <a id="downloadBtn" href="https://drive.google.com/file/d/1N0XJKmeAoVurGLesajdTbZ-P0X9ytrPd/view?usp=drivesdk..." class="btn-download" target="_blank" style="position: absolute; left: 20px; top: 20px; text-decoration: none;"> تحميل التطبيق 📥</a>
 
     <button class="theme-toggle" onclick="toggle()" id="Btn" style="position: absolute; right: 20px; top: 20px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 1000;">☀️</button>
 
@@ -1027,16 +1027,24 @@
 }
 
 function openModal() {
+    // إظهار نافذة الأذكار
     document.getElementById('azkarModal').style.display = 'block';
-    // كود لإخفاء الأزرار مؤقتاً حتى لا تغطي على الشاشة
-    document.querySelector('.btn-download').style.display = 'none';
+
+    // إخفاء زر التحميل (باستخدام الهوية الجديدة)
+    document.getElementById('downloadBtn').style.display = 'none';
+    
+    // إخفاء زر الوضع المظلم
     if(document.getElementById('Btn')) document.getElementById('Btn').style.display = 'none';
 }
 
 function closeModal() {
+    // إغلاق النافذة
     document.getElementById('azkarModal').style.display = 'none';
-    // كود لإرجاع الأزرار عند الخروج
-    document.querySelector('.btn-download').style.display = 'block';
+
+    // إعادة إظهار زر التحميل
+    document.getElementById('downloadBtn').style.display = 'block';
+
+    // إعادة إظهار زر الوضع المظلم
     if(document.getElementById('Btn')) document.getElementById('Btn').style.display = 'block';
 }
     function switchTab(id, btn) { 
@@ -1051,6 +1059,7 @@ function closeModal() {
 
 </body>
 </html>
+
 
 
 
