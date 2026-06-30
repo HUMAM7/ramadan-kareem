@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYRJRL2XCR"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYRJRL2XCR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -87,7 +86,8 @@
         @keyframes scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(100%, 0); } }
 
         .countdown-box { background: var(--timer-bg); color: white; padding: 25px 15px; border-radius: 15px; text-align: center; margin-bottom: 25px; direction: rtl; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-        .today-date-header { font-size: 1.3em; font-weight: bold; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); color: var(--accent); }
+        .today-date-header { font-size: 1.3em; font-weight: bold; margin-bottom: 10px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); color: var(--accent); }
+        .current-time-display { font-size: 22px; font-weight: bold; color: #f39c12; text-align: center; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
         .timer-display { display: flex; justify-content: space-between; align-items: stretch; gap: 10px; margin-top: 20px; flex-wrap: nowrap; }
         .time-unit { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); padding: 15px 5px; border-radius: 12px; flex: 1; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; position: relative; }
         .time-value { font-size: 1.5em; font-weight: 900; line-height: 1.2; direction: ltr; }
@@ -103,7 +103,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         .active-prayer .time-label, .active-prayer .time-value { 
-            color: #114258 !important; /* لون أزرق داكن دائماً ليكون مقروءاً على الأبيض */
+            color: #114258 !important; 
             font-weight: 900 !important; 
         }
 
@@ -155,13 +155,14 @@
         .tab-container { display: flex; flex-wrap: wrap; background: var(--bg-light); padding: 12px; gap: 8px; justify-content: center; border-bottom: 1px solid var(--border-color); }
         
         /* أزرار التبويبات */
-        .tab-btn { flex: 1 1 30%; padding: 12px 5px; border: 2px solid transparent; background: var(--tab-bg); color: var(--tab-text); cursor: pointer; font-weight: 800; border-radius: 10px; font-size: 1em; text-align: center; transition: 0.2s; }
+        .tab-btn { flex: 1 1 20%; padding: 10px 5px; border: 2px solid transparent; background: var(--tab-bg); color: var(--tab-text); cursor: pointer; font-weight: 800; border-radius: 10px; font-size: 0.9em; text-align: center; transition: 0.2s; }
         .tab-btn.active { background: var(--azkar-color); color: white; border-color: var(--azkar-color); box-shadow: 0 4px 10px rgba(0,0,0,0.2); transform: translateY(-2px); }
         .tab-btn.quran-tab.active { background: var(--quran-color) !important; border-color: var(--quran-color) !important; }
         .tab-btn.dead-tab.active { background: var(--dead-color) !important; border-color: var(--dead-color) !important; }
         /* تبويب الأدعية الذكية */
         .tab-btn.ai-tab { color: #d4af37; border: 1px solid #d4af37; background: transparent; }
         .tab-btn.ai-tab.active { background: linear-gradient(135deg, #114258, #1a5f7a) !important; color: white; border-color: transparent !important; }
+        .tab-btn.extra-tab { background: #e67e22; color: white; }
 
         .modal-body { padding: 20px; overflow-y: auto; background: var(--bg-container); flex-grow: 1; position: relative; scroll-behavior: smooth; }
         .tab-content { display: none; }
@@ -220,7 +221,6 @@
             <span class="deceased-dua">اللهم اغفر لها وارحمها وأسكنها فسيح جناتك</span>
         </div>
         
-        <!-- إعادة شريط الأدعية المتحرك كما كان -->
         <div class="scrolling-duas-container">
             <div class="scrolling-duas-content" id="scrollingDuas"></div>
         </div>
@@ -257,6 +257,8 @@
 
     <div class="countdown-box" id="countdownArea">
         <div id="todayDateDisplay" class="today-date-header">جاري جلب التاريخ والأوقات...</div>
+        <div id="currentTimeDisplay" class="current-time-display">جاري تحميل الوقت...</div>
+        
         <div class="timer-label-main" id="timerLabel">⏳ جاري حساب الأوقات...</div>
         <div class="timer-display" id="prayerDisplay">
             <div class="time-unit" id="unit-fajr"> <span class="time-value" id="pt-fajr">--:--</span> <span class="time-label">الفجر</span> </div>
@@ -302,7 +304,6 @@
     </div>
 </div>
 
-<!-- بقية النوافذ المنبثقة (Modal) -->
 <div id="donateModal" class="modal-overlay" style="z-index: 10000;">
     <div class="modal-content" style="height: auto; max-height: 80vh;">
         <div class="modal-header" style="background: var(--donate-color);">
@@ -333,7 +334,6 @@
             <span style="cursor:pointer; font-size:2em; font-weight: bold;" onclick="closeModal()">&times;</span>
         </div>
         <div class="tab-container">
-            <!-- تمت إضافة تبويب الأدعية الذكية هنا -->
             <button class="tab-btn ai-tab" onclick="switchTab('aiDuas', this)">✨ أدعية ذكية</button>
             <button class="tab-btn active" onclick="switchTab('morning', this)">☀️ الصباح</button>
             <button class="tab-btn" onclick="switchTab('evening', this)">🌙 المساء</button>
@@ -341,10 +341,19 @@
             <button class="tab-btn dead-tab" onclick="switchTab('deadDuas', this)">🕊️ للميت</button>
             <button class="tab-btn quran-tab" onclick="switchTab('quran', this)">📖 القرآن</button>
             <button class="tab-btn" onclick="switchTab('rosary', this)">📿 سبحة</button>
+            <button class="tab-btn extra-tab" onclick="switchTab('extraPages', this)">📚 أقسام إضافية</button>
         </div>
         
         <div class="modal-body" id="modalBody">
-            <!-- قسم الأدعية الذكية المتجددة -->
+            <div id="extraPages" class="tab-content" style="display:none;">
+                <div style="display: flex; flex-direction: column; gap: 15px; padding: 10px; text-align: center;">
+                    <a href="shahada.html" style="background-color: #f39c12; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">الشهادة ☝️</a>
+                    <a href="fatwa.html" style="background-color: #16a085; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">الفتاوى الشائعة 📚</a>
+                    <a href="stories.html" style="background-color: #2980b9; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">القصص النبوية 📜</a>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-secondary); font-size: 1em; font-weight: bold;">(اضغط على الأقسام للانتقال إليها)</p>
+            </div>
+
             <div id="aiDuas" class="tab-content" style="display:none;">
                 <div class="ai-dua-box">
                     <div class="ai-dua-text" id="dynamicDuaBox">جاري تحميل الدعاء...</div>
@@ -366,10 +375,21 @@
             </div>
 
             <div id="quran" class="tab-content" style="display:none;">
+                <div style="background-color: var(--bg-light); border: 2px solid var(--quran-color); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                    <h4 style="color: var(--quran-color); margin-top: 0; margin-bottom: 15px; font-size: 1.2em;">🔖 حفظ موضع القراءة</h4>
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <input type="text" id="bmSurah" placeholder="اسم السورة" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Tajawal'; font-size: 1em;">
+                        <input type="number" id="bmAyah" placeholder="رقم الآية" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Tajawal'; font-size: 1em;">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-save-bm" onclick="saveBookmark()">حفظ الموضع</button>
+                        <button class="btn-load-bm" onclick="loadBookmark()">عرض المحفوظ</button>
+                    </div>
+                    <p id="savedBookmarkDisplay" style="margin-top: 15px; font-weight: bold; color: var(--text-main); font-size: 1em;"></p>
+                </div>
+
                 <div id="quranControls" class="quran-controls">
                     <select id="surahSelect" onchange="fetchSurah(this.value)" style="flex: 1 1 100%; padding: 12px;"></select>
-                    <button class="btn-save-bm" onclick="saveBookmark()">🔖 حفظ العلامة</button>
-                    <button class="btn-load-bm" onclick="loadBookmark()">📂 استكمال القراءة</button>
                 </div>
                 <div id="quranLoader" style="text-align:center; display:none; padding:20px; font-weight:bold; font-size: 1.2em; color: var(--primary);">⏳ جاري تحميل السورة...</div>
                 <div id="quranText" class="quran-text-area">اختر السورة من القائمة للبدء في التلاوة</div>
@@ -391,71 +411,40 @@
 <script>
     const surahNames = ["الفاتحة","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود","يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون","النور","الفرقان","الشعراء","النمل","القصص","العنكبوت","الروم","لقمان","السجدة","الأحزاب","سبأ","فاطر","يس","الصافات","ص","الزمر","غافر","فصلت","الشورى","الزخرف","الدخان","الجاثية","الأحقاف","محمد","الفتح","الحجرات","ق","الذاريات","الطور","النجم","القمر","الرحمن","الواقعة","الحديد","المجادلة","الحشر","الممتحنة","الصف","الجمعة","المنافقون","التغابن","الطلاق","التحريم","الملك","القلم","الحاقة","المعارج","نوح","الجن","المزمل","المدثر","القيامة","الإنسان","المرسلات","النبأ","النازعات","عبس","التكوير","الإنفطار","المطففين","الانشقاق","البروج","الطارق","الأعلى","الغاشية","الفجر","البلد","الشمس","الليل","الضحى","الشرح","التين","العلق","القدر","البينة","الزلزلة","العاديات","القارعة","التكاثر","العصر","الهمزة","الفيل","قريش","الماعون","الكوثر","الكافرون","النصر","المسد","الإخلاص","الفلق","الناس"];
 
-    // قاعدة بيانات ذكية لتوليد الأدعية
     const aiDynamicDuas = [
         "اللهم إني أسألك رضاك والجنة، وأعوذ بك من سخطك والنار.",
         "اللهم اشفِ مرضانا ومرضى المسلمين، وارحم موتانا وموتى المسلمين.",
         "يا حي يا قيوم برحمتك أستغيث أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.",
         "اللهم إني أسألك العفو والعافية في الدنيا والآخرة.",
         "ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.",
-        "اللهم اغفر للمؤمنين والمؤمنات والمسلمين والمسلمات الأحياء منهم والأموات.",
-        "اللهم ارزقنا حسن الخاتمة واجعل خير أعمالنا خواتيمها.",
-        "اللهم اكفني بحلالك عن حرامك، وأغنني بفضلك عمن سواك.",
-        "اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن.",
-        "اللهم اجعل القرآن العظيم ربيع قلوبنا، ونور صدورنا، وجلاء أحزاننا.",
-        "اللهم يسر لي أمري واشرح لي صدري واحلل عقدة من لساني.",
-        "اللهم إنك عفو كريم تحب العفو فاعف عني.",
-        "اللهم اغفر لي ذنبي كله، دقه وجله، وأوله وآخره، وعلانيته وسره."
+        "اللهم اغفر للمؤمنين والمؤمنات والمسلمين والمسلمات الأحياء منهم والأموات."
     ];
 
     const deadDuas = [
         "اللهم اغفر لسعاد خليل إبراهيم وارحمها، وعافها واعف عنها، وأكرم نزلها، ووسع مدخلها.",
         "اللهم اغسلها بالماء والثلج والبرد، ونقها من الخطايا كما ينقى الثوب الأبيض من الدنس.",
         "اللهم أبدلها داراً خيراً من دارها، وأهلاً خيراً من أهلها.",
-        "اللهم أدخلها الجنة، وأعذها من عذاب القبر، ومن عذاب النار.",
-        "اللهم إن كانت محسنة فزد في حسناتها، وإن كانت مسيئة فتجاوز عن سيئاتها.",
-        "اللهم آنس وحشتها، وارحم غربتها، وأنر ظلمتها.",
         "اللهم اجعل قبرها روضة من رياض الجنة، ولا تجعله حفرة من حفر النار.",
-        "اللهم يمن كتابها، ويسر حسابها، وثقل بالحسنات ميزانها.",
-        "اللهم اجعل عن يمينها نوراً، وعن شمالها نوراً، ومن أمامها نوراً، ومن فوقها نوراً.",
-        "اللهم انظر إليها نظرة رضا، فإن من تنظر إليه نظرة رضا لا تعذبه أبداً.",
-        "اللهم أسكنها فسيح الجنان، واغفر لها يا رحمن، وارحمها يا رحيم.",
-        "اللهم احشرها مع المتقين إلى الرحمن وفداً.",
-        "اللهم إنها في ذمتك وحبل جوارك، فقها فتنة القبر وعذاب النار.",
-        "اللهم ارحمها رحمة تسع السماوات والأرض، اللهم اجعل قبرها في نور دائم لا ينقطع.",
-        "اللهم أطعمها من الجنة واسقها من الجنة وأرها مكانها من الجنة."
+        "اللهم آنس وحشتها، وارحم غربتها، وأنر ظلمتها."
     ];
 
     const azkarData = {
         morning: [
-            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
-            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ هُوَ اللَّهُ أَحَدٌ... (الإخلاص)", c: 3},
-            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ... (الفلق)", c: 3},
-            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ أَعُوذُ بِرَبِّ النَّاسِ... (الناس)", c: 3},
-            {t: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لا إِلَهَ إِلَّا اللَّهُ، وَحْدَهُ لا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.", c: 1},
-            {t: "اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ.", c: 1},
-            {t: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ.", c: 1},
-            {t: "حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ.", c: 7},
-            {t: "رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا.", c: 3}
+            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
+            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ هُوَ اللَّهُ أَحَدٌ... (الإخلاص)", c: 3},
+            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ... (الفلق)", c: 3},
+            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ أَعُوذُ بِرَبِّ النَّاسِ... (الناس)", c: 3},
+            {t: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لا إِلَهَ إِلَّا اللَّهُ...", c: 1}
         ],
         evening: [
-            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
+            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
             {t: "المعوذات (الإخلاص، الفلق، الناس)", c: 3},
-            {t: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لا إِلَهَ إِلَّا اللَّهُ...", c: 1},
-            {t: "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ.", c: 1},
-            {t: "اللَّهُمَّ إِنِّي أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ.", c: 4},
-            {t: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ.", c: 3}
+            {t: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لا إِلَهَ إِلَّا اللَّهُ...", c: 1}
         ],
         generalDuas: [
             {t: "اللهم إني أسألك العفو والعافية في الدنيا والآخرة.", c: 1},
             {t: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.", c: 1},
-            {t: "اللهم إنك عفو كريم تحب العفو فاعف عنا.", c: 1},
-            {t: "يا مقلب القلوب ثبت قلبي على دينك.", c: 1},
-            {t: "اللهم آت نفسي تقواها، وزكها أنت خير من زكاها، أنت وليها ومولاها.", c: 1},
-            {t: "اللهم أصلح لي ديني الذي هو عصمة أمري، وأصلح لي دنياي التي فيها معاشي.", c: 1},
-            {t: "اللهم اغفر لي خطيئتي وجهلي، وإسرافي في أمري، وما أنت أعلم به مني.", c: 1},
-            {t: "اللهم أحسن عاقبتنا في الأمور كلها، وأجرنا من خزي الدنيا وعذاب الآخرة.", c: 1},
-            {t: "رب اجعلني مقيم الصلاة ومن ذريتي ربنا وتقبل دعاء.", c: 1}
+            {t: "اللهم إنك عفو كريم تحب العفو فاعف عنا.", c: 1}
         ]
     };
 
@@ -481,11 +470,21 @@
     let userLat = null;
     let userLon = null;
 
+    // دالة الساعة الحية (الجديدة)
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('ar-IQ', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+        const clockElement = document.getElementById('currentTimeDisplay');
+        if(clockElement) {
+            clockElement.innerText = timeString;
+        }
+    }
+    setInterval(updateClock, 1000); // تحديث كل ثانية
+
     function init() {
         document.getElementById('year').innerText = new Date().getFullYear();
         if(localStorage.getItem('themeMode') === 'dark') { document.body.classList.add('dark-mode'); document.getElementById('Btn').innerText = '🌙'; }
         
-        // استعادة شريط الأدعية المتحرك في الواجهة الرئيسية
         let htmlDuas = '';
         const scrollingDuasText = [
             "اللهم اغفر لسعاد خليل إبراهيم وارحمها", 
@@ -496,22 +495,22 @@
         for(let i=0; i<30; i++) { scrollingDuasText.forEach(d => htmlDuas += `<span class="dua-item">🤲 ${d}</span>`); }
         document.getElementById('scrollingDuas').innerHTML = htmlDuas;
         
-        // توليد دعاء ذكي للتبويب الجديد
         generateNewDua();
-
         generateQR(); 
         renderAzkar(); 
         initQuran(); 
         renderDeadDuas();
         
+        // استدعاء علامة الحفظ عند الفتح
+        loadBookmark();
+        updateClock();
+        
         if(localStorage.getItem("ramadan_city")) {
             document.getElementById("city").value = localStorage.getItem("ramadan_city");
         }
-        
         getLocation();
     }
 
-    // دالة لتوليد دعاء عشوائي جديد عند الطلب
     function generateNewDua() {
         const randomAiDua = aiDynamicDuas[Math.floor(Math.random() * aiDynamicDuas.length)];
         document.getElementById("dynamicDuaBox").innerText = `"${randomAiDua}"`;
@@ -524,14 +523,54 @@
                 (position) => {
                     userLat = position.coords.latitude;
                     userLon = position.coords.longitude;
+                    
+                    // تحديث القائمة المنسدلة لإضافة "موقعك الحالي"
+                    let citySelect = document.getElementById("city");
+                    let gpsOption = document.querySelector("option[value='gps']");
+                    if(!gpsOption) {
+                        gpsOption = document.createElement("option");
+                        gpsOption.value = "gps";
+                        gpsOption.text = "موقعك الحالي (GPS) 📍";
+                        citySelect.add(gpsOption, citySelect.options[0]);
+                    }
+                    citySelect.value = "gps";
+                    
                     loadTimes(false); 
                 },
                 (error) => {
+                    alert("تعذر تحديد الموقع تلقائياً، سيتم الاعتماد على المدينة المختارة.");
                     loadTimes(true); 
                 }
             );
         } else {
+            alert("جهازك لا يدعم ميزة تحديد الموقع.");
             loadTimes(true);
+        }
+    }
+
+    // دوال حفظ واسترجاع موضع القراءة (الجديدة)
+    function saveBookmark() {
+        const surah = document.getElementById('bmSurah').value;
+        const ayah = document.getElementById('bmAyah').value;
+        if(surah === "" || ayah === "") {
+            alert("يرجى إدخال اسم السورة ورقم الآية أولاً.");
+            return;
+        }
+        localStorage.setItem('savedSurah_Noor', surah);
+        localStorage.setItem('savedAyah_Noor', ayah);
+        alert("تم حفظ موضع القراءة بنجاح!");
+        loadBookmark();
+    }
+
+    function loadBookmark() {
+        const savedSurah = localStorage.getItem('savedSurah_Noor');
+        const savedAyah = localStorage.getItem('savedAyah_Noor');
+        const display = document.getElementById('savedBookmarkDisplay');
+        
+        if (savedSurah && savedAyah) {
+            display.innerText = "آخر توقف: سورة " + savedSurah + " - الآية (" + savedAyah + ")";
+        } else {
+            display.innerText = "لم تقم بحفظ أي موضع بعد.";
         }
     }
 
@@ -567,9 +606,9 @@
             const btn = document.getElementById("adhanBtn");
             btn.innerHTML = "✅ الأذان مفعل للصلوات"; btn.style.background = "#27ae60"; btn.style.color = "#fff";
             document.getElementById("previewBtn").innerHTML = "▶️ استماع"; document.getElementById("previewBtn").style.background = "var(--text-secondary)";
-            alert("تم تفعيل التنبيه بصوت الأذان بنجاح. سيتم رفع الأذان تلقائياً في أوقات الصلاة المحددة.");
+            alert("تم تفعيل التنبيه بصوت الأذان بنجاح.");
             checkAdhanLoop();
-        }).catch(() => alert("يجب النقر على الصفحة أولاً لتفعيل الصوت حسب سياسة المتصفح الذكي"));
+        }).catch(() => alert("يجب النقر على الصفحة أولاً لتفعيل الصوت."));
     }
 
     function checkAdhanLoop() {
@@ -611,11 +650,11 @@
             const data = await response.json();
             if(data.code === 200) {
                 let html = `<h2 class="surah-title">سورة ${data.data.name}</h2>`;
-                if(data.data.number !== 9 && data.data.number !== 1) html += `<span class="basmala">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>`;
+                if(data.data.number !== 9 && data.data.number !== 1) html += `<span class="basmala">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>`;
                 let fullText = "";
                 data.data.ayahs.forEach(ayah => {
                     let text = ayah.text;
-                    if(data.data.number !== 1 && data.data.number !== 9 && ayah.numberInSurah === 1) text = text.replace("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ", "");
+                    if(data.data.number !== 1 && data.data.number !== 9 && ayah.numberInSurah === 1) text = text.replace("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ", "");
                     fullText += `${text} <span class="ayah-number">${ayah.numberInSurah}</span> `;
                 });
                 textArea.innerHTML = html + `<p style="text-align: justify; line-height: 2.2;">${fullText}</p>`;
@@ -651,8 +690,12 @@
         let lat, lon;
         if (useCityList || (!userLat && !userLon)) {
             const cityKey = document.getElementById("city").value;
-            localStorage.setItem("ramadan_city", cityKey);
-            lat = cities[cityKey].lat; lon = cities[cityKey].lon;
+            if(cityKey !== "gps") {
+                localStorage.setItem("ramadan_city", cityKey);
+                lat = cities[cityKey].lat; lon = cities[cityKey].lon;
+            } else {
+                lat = userLat; lon = userLon; // الاستمرار في استخدام الـ GPS إذا تم اختياره
+            }
         } else { lat = userLat; lon = userLon; }
         
         const now = new Date();
@@ -700,8 +743,6 @@
                 ];
                 
                 let nextPrayer = times.find(p => p.t > nowTime);
-                
-                // إزالة التظليل عن الجميع أولاً
                 document.querySelectorAll('.time-unit').forEach(el => el.classList.remove('active-prayer'));
 
                 if (nextPrayer) { 
@@ -714,7 +755,6 @@
                     activeUnitId = "unit-fajr";
                 }
 
-                // إضافة التظليل للوقت القادم (تم الإصلاح ليكون مقروءاً)
                 if(document.getElementById(activeUnitId)) {
                     document.getElementById(activeUnitId).classList.add('active-prayer');
                 }
