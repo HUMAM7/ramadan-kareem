@@ -226,34 +226,100 @@
         </div>
     </div>
 
-    <div class="controls-grid" id="controlsArea">
-        <div class="control-group">
-            <label style="font-weight: 900; margin-bottom: 8px; display: block; font-size: 1.2em;">📍 اختر مدينتك:</label>
-            <div class="location-row">
-                <select id="city" onchange="loadTimes(true)">
-                    <option value="Baghdad">بغداد - العاصمة</option>
-                    <option value="Ramadi" selected>الأنبار - الرمادي</option>
-                    <option value="Mosul">نينوى - الموصل</option>
-                    <option value="Basra">البصرة</option>
-                    <option value="Erbil">أربيل</option>
-                    <option value="Kirkuk">كركوك</option>
-                    <option value="Sulaymaniyah">السليمانية</option>
-                    <option value="Duhok">دهوك</option>
-                    <option value="Karbala">كربلاء المقدسة</option>
-                    <option value="Najaf">النجف الأشرف</option>
-                    <option value="Nasiriyah">ذي قار - الناصرية</option>
-                    <option value="Amarah">ميسان - العمارة</option>
-                    <option value="Kut">واسط - الكوت</option>
-                    <option value="Diwaniyah">القادسية - الديوانية</option>
-                    <option value="Hilla">بابل - الحلة</option>
-                    <option value="Baqubah">ديالى - بعقوبة</option>
-                    <option value="Samawah">المثنى - السماوة</option>
-                    <option value="Tikrit">صلاح الدين - تكريت</option>
-                </select>
-                <button class="btn-gps" onclick="getLocation()" title="تحديد موقعي تلقائياً">📍</button>
-            </div>
-        </div>
+  <div class="prayer-container" style="text-align: center; font-family: Arial, sans-serif; direction: rtl; padding: 20px;">
+    
+    <button onclick="getLocationByGPS()" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        تحديث الموقع تلقائياً (GPS) 📍
+    </button>
+    
+    <br><br>
+    
+    <label for="citySelect" style="font-size: 16px; font-weight: bold;">أو اختر مدينتك يدوياً:</label>
+    <select id="citySelect" onchange="getManualCityTimes()" style="padding: 8px; font-size: 16px; border-radius: 5px; margin-right: 5px;">
+        <option value="ramadi">الرمادي</option>
+        <option value="baghdad">بغداد</option>
+        <option value="mosul">الموصل</option>
+        <option value="basra">البصرة</option>
+        <option value="erbil">أربيل</option>
+    </select>
+
+    <div style="margin-top: 20px; font-size: 18px; line-height: 2;">
+        <p>الفجر: <span id="fajr" style="font-weight: bold; color: #d9534f;">-:-</span></p>
+        <p>الظهر: <span id="dhuhr" style="font-weight: bold;">-:-</span></p>
+        <p>العصر: <span id="asr" style="font-weight: bold;">-:-</span></p>
+        <p>المغرب: <span id="maghrib" style="font-weight: bold; color: #f0ad4e;">-:-</span></p>
+        <p>العشاء: <span id="isha" style="font-weight: bold;">-:-</span></p>
     </div>
+</div>
+
+<script>
+    // 1. تحديد إحداثيات دقيقة وثابتة للمدن لتجنب أي تقصير أو خطأ
+    const cityCoordinates = {
+        ramadi: { lat: 33.4219, lng: 43.3046 },
+        baghdad: { lat: 33.3152, lng: 44.3661 },
+        mosul: { lat: 36.3489, lng: 43.1577 },
+        basra: { lat: 30.5081, lng: 47.7835 },
+        erbil: { lat: 36.1901, lng: 44.0089 }
+    };
+
+    // عند فتح الصفحة لأول مرة، يتم تحميل أوقات المدينة المختارة تلقائياً (الرمادي كمثال افتراضي)
+    window.onload = function() {
+        getManualCityTimes();
+    };
+
+    // 2. دالة جلب الأوقات عند اختيار مدينة يدوياً من القائمة
+    function getManualCityTimes() {
+        const selectedCity = document.getElementById("citySelect").value;
+        const coords = cityCoordinates[selectedCity];
+        fetchTimes(coords.lat, coords.lng);
+    }
+
+    // 3. دالة جلب الأوقات عبر الـ GPS عند الضغط على الزر
+    function getLocationByGPS() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    fetchTimes(lat, lng);
+                    alert("تم تحديث مواقيت الصلاة بناءً على موقعك الحالي بدقة!");
+                },
+                (error) => {
+                    // في حال رفض المستخدم الصلاحية أو فشل الـ GPS، نعود للمدينة المختارة في القائمة
+                    alert("تعذر تحديد الموقع تلقائياً، سيتم الاعتماد على المدينة المختارة في القائمة.");
+                    getManualCityTimes();
+                },
+                { enableHighAccuracy: true, timeout: 5000 } // إعدادات لزيادة دقة الـ GPS
+            );
+        } else {
+            alert("متصفحك أو جهازك لا يدعم ميزة تحديد الموقع التلقائي.");
+            getManualCityTimes();
+        }
+    }
+
+    // 4. الدالة الأساسية للاتصال بالـ API وجلب البيانات وعرضها
+    function fetchTimes(lat, lon) {
+        // تم استخدام method=5 (الهيئة العامة المصرية للمساحة) لضبط أوقات العراق بدقة متناهية
+        const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=5`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.data) {
+                    const times = data.data.timings;
+                    // تحديث النصوص في واجهة المستخدم
+                    document.getElementById("fajr").innerText = times.Fajr;
+                    document.getElementById("dhuhr").innerText = times.Dhuhr;
+                    document.getElementById("asr").innerText = times.Asr;
+                    document.getElementById("maghrib").innerText = times.Maghrib;
+                    document.getElementById("isha").innerText = times.Isha;
+                }
+            })
+            .catch(error => {
+                console.error("حدث خطأ أثناء جلب أوقات الصلاة:", error);
+            });
+    }
+</script>
 
     <div class="countdown-box" id="countdownArea">
         <div id="todayDateDisplay" class="today-date-header">جاري جلب التاريخ والأوقات...</div>
