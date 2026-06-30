@@ -41,7 +41,6 @@
             --tab-bg: #edf2f7;
             --tab-text: #2d3748;
             --timer-bg: linear-gradient(135deg, #1a5f7a, #2c5282);
-            --qibla-color: #8e44ad;
         }
 
         body.dark-mode {
@@ -64,7 +63,6 @@
             --tab-bg: #334155;
             --tab-text: #f1f5f9;
             --timer-bg: linear-gradient(135deg, #1e293b, #0f172a);
-            --qibla-color: #9b59b6;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
@@ -157,24 +155,13 @@
         .modal-body { padding: 20px; overflow-y: auto; background: var(--bg-container); flex-grow: 1; position: relative; scroll-behavior: smooth; }
         .tab-content { display: none; }
         
+        /* تنسيقات الأقسام الإضافية (الفتاوى والقصص) من الداخل */
         .extra-details { background: var(--bg-light); padding: 15px; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02); direction: rtl; }
         .extra-summary { font-weight: 900; font-size: 1.15em; color: var(--primary); cursor: pointer; outline: none; padding: 5px; list-style-type: '🔻 '; }
         .extra-details[open] .extra-summary { list-style-type: '🔺 '; color: var(--accent); }
         .extra-content { padding: 15px 10px 5px 10px; font-size: 1.1em; line-height: 2; color: var(--text-main); border-top: 1px solid var(--border-color); margin-top: 10px; text-align: justify; }
         .quran-verse { font-family: 'Amiri', serif; font-size: 1.25em; color: var(--quran-color); background: var(--quran-bg); padding: 10px; border-radius: 8px; display: block; margin: 10px 0; font-weight: bold; text-align: center;}
         .back-btn-extra { margin-bottom: 15px; padding: 10px 20px; background-color: #e74c3c; color: white; border: none; border-radius: 8px; font-weight: bold; font-family: 'Tajawal'; font-size: 1.1em; cursor: pointer; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; text-align: center;}
-
-        /* تنسيقات بوصلة القبلة */
-        .qibla-compass-container { position: relative; width: 250px; height: 250px; margin: 20px auto; border: 10px solid var(--qibla-color); border-radius: 50%; background: var(--bg-light); box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; }
-        .compass-north { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); font-weight: 900; color: var(--qibla-color); font-size: 1.2em; }
-        .compass-south { position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); font-weight: bold; color: var(--text-secondary); }
-        .compass-east { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-weight: bold; color: var(--text-secondary); }
-        .compass-west { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-weight: bold; color: var(--text-secondary); }
-        
-        .kaaba-pointer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: transform 0.2s ease-out; }
-        .kaaba-icon { position: absolute; top: 25px; left: 50%; transform: translateX(-50%); width: 45px; height: 45px; background: #111; border: 3px solid #d4af37; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); display: flex; justify-content: center; align-items: center; color: #d4af37; font-size: 1.2em; }
-        .kaaba-line { position: absolute; top: 75px; left: 50%; transform: translateX(-50%); width: 4px; height: 50px; background: var(--qibla-color); }
-        .center-dot { width: 15px; height: 15px; background: var(--accent); border-radius: 50%; z-index: 10; border: 3px solid #fff; }
 
         .ai-dua-box { background: linear-gradient(135deg, var(--primary-light), var(--primary)); color: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative; overflow: hidden; margin-bottom: 20px; border: 2px solid var(--accent); }
         .ai-dua-text { font-family: 'Amiri', serif; font-size: 1.8em; font-weight: bold; line-height: 1.8; margin-bottom: 20px; }
@@ -190,7 +177,7 @@
         .ayah-number { font-size: 0.6em; color: var(--quran-color); border: 2px solid var(--quran-color); border-radius: 50%; padding: 2px 10px; margin: 0 8px; display: inline-block; vertical-align: middle; font-weight: bold; font-family: 'Tajawal'; }
         .surah-title { color: var(--quran-color); text-align: center; border-bottom: 3px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px; font-family: 'Amiri', serif; font-weight: 900; }
         
-        .btn-save-bm, .btn-load-bm { padding: 12px; border-radius: 10px; cursor: pointer; font-size: 1em; flex: 1; font-family: 'Tajawal'; border: none; font-weight: 900; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); white-space: nowrap; }
+        .btn-save-bm, .btn-load-bm { padding: 12px; border-radius: 10px; cursor: pointer; font-size: 1em; flex: 1; font-family: 'Tajawal'; border: none; font-weight: 900; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .btn-save-bm { background: #e67e22; }
         .btn-load-bm { background: var(--quran-color); }
 
@@ -257,7 +244,7 @@
                     <option value="Samawah">المثنى - السماوة</option>
                     <option value="Tikrit">صلاح الدين - تكريت</option>
                 </select>
-                <button class="btn-gps" onclick="getLocation(true)" title="تحديد موقعي تلقائياً">📍</button>
+                <button class="btn-gps" onclick="getLocation()" title="تحديد موقعي تلقائياً">📍</button>
             </div>
         </div>
     </div>
@@ -311,6 +298,7 @@
     </div>
 </div>
 
+<!-- النوافذ المنبثقة (Modal) -->
 <div id="donateModal" class="modal-overlay" style="z-index: 10000;">
     <div class="modal-content" style="height: auto; max-height: 80vh;">
         <div class="modal-header" style="background: var(--donate-color);">
@@ -319,10 +307,12 @@
         </div>
         <div class="modal-body" style="text-align: center; line-height: 2;">
             <p style="font-size: 1.3em; font-weight: 900; color: var(--text-main);">ساهم في علاج وعون مرضى السرطان، اجعلها صدقة جارية تظلك يوم القيامة.</p>
+            
             <div style="background: var(--bg-light); border: 3px solid #3498db; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
                 <strong style="color: #3498db; font-size: 1.4em;">💳 رقم الماستر كارد</strong><br>
                 <span style="font-size: 1.5em; color: var(--text-main); font-family: monospace; font-weight: 900; display: block; margin-top: 10px;">[7115684123]</span>
             </div>
+            
             <div style="background: var(--bg-light); border: 3px solid #e67e22; padding: 20px; border-radius: 15px;">
                 <strong style="color: #e67e22; font-size: 1.4em;">📱 محفظة زين كاش</strong><br>
                 <span style="font-size: 1.5em; color: var(--text-main); font-family: monospace; font-weight: 900; display: block; margin-top: 10px;">[في حال اردت التحويل تواصل معي معرف تلي كرام hn_pz]</span>
@@ -350,17 +340,17 @@
         </div>
         
         <div class="modal-body" id="modalBody">
-            
+            <!-- تبويب الأقسام الإضافية (نظام الصفحة الواحدة الذكي) -->
             <div id="extraPages" class="tab-content" style="display:none;">
                 
+                <!-- القائمة الرئيسية للأقسام (تم إصلاح الترتيب لتكون الأزرار فوق بعضها) -->
                 <div id="extraMenu" style="display: block; padding: 10px; text-align: center;">
                     <button onclick="showExtra('shahadaSection')" style="display: block; width: 100%; margin-bottom: 15px; background-color: #f39c12; color: white; padding: 18px; border: none; border-radius: 12px; font-size: 1.5em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer; transition: 0.2s;">الشهادة وفضائلها ☝️</button>
                     <button onclick="showExtra('fatwaSection')" style="display: block; width: 100%; margin-bottom: 15px; background-color: #16a085; color: white; padding: 18px; border: none; border-radius: 12px; font-size: 1.5em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer; transition: 0.2s;">الفتاوى الشائعة 📚</button>
                     <button onclick="showExtra('storiesSection')" style="display: block; width: 100%; margin-bottom: 15px; background-color: #2980b9; color: white; padding: 18px; border: none; border-radius: 12px; font-size: 1.5em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer; transition: 0.2s;">القصص النبوية 📜</button>
-                    <!-- الزر الجديد لبوصلة القبلة -->
-                    <button onclick="showExtra('qiblaSection')" style="display: block; width: 100%; margin-bottom: 15px; background-color: var(--qibla-color); color: white; padding: 18px; border: none; border-radius: 12px; font-size: 1.5em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer; transition: 0.2s;">بوصلة القبلة 🧭</button>
                 </div>
 
+                <!-- 1. قسم الشهادة (موسع) -->
                 <div id="shahadaSection" style="display:none; text-align: center; padding: 20px;">
                     <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
                     <div style="font-size: 4em;">☝️</div>
@@ -368,46 +358,154 @@
                     <div style="font-family: 'Amiri', serif; font-size: 2.3em; font-weight: 900; color: var(--primary); line-height: 1.8; margin: 20px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
                         أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا ٱللَّٰهُ<br>وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ
                     </div>
+                    
+                    <div style="background: var(--bg-light); border: 2px solid #f39c12; border-radius: 15px; padding: 15px; margin-top: 20px; text-align: justify; direction: rtl;">
+                        <h3 style="color: #f39c12; text-align: center; margin-top: 0;">🌟 فضائل لا إله إلا الله</h3>
+                        <ul style="font-size: 1.2em; color: var(--text-main); line-height: 2; padding-right: 20px;">
+                            <li><strong>أعظم الكلمات:</strong> هي أفضل الذكر، قال ﷺ: «أفضل الذكر لا إله إلا الله».</li>
+                            <li><strong>مفتاح الجنة:</strong> قال ﷺ: «مَنْ كَانَ آخِرُ كَلَامِهِ لَا إِلَهَ إِلَّا اللهُ دَخَلَ الجَنَّةَ».</li>
+                            <li><strong>ترجح بالميزان:</strong> لو وضعت السماوات والأرض في كفة، ولا إله إلا الله في كفة، لرجحت بهم.</li>
+                            <li><strong>النجاة من النار:</strong> حرّم الله على النار من قال لا إله إلا الله يبتغي بذلك وجه الله.</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: var(--bg-light); border: 2px solid var(--primary); border-radius: 15px; padding: 15px; margin-top: 15px; text-align: justify; direction: rtl;">
+                        <h3 style="color: var(--primary); text-align: center; margin-top: 0;">🔑 شروط لا إله إلا الله</h3>
+                        <p style="font-size: 1.1em; color: var(--text-main); line-height: 1.8;">لا تنفع قائلها إلا باجتماع شروطها السبعة وهي: (العلم بمعناها، اليقين المنافي للشك، القبول المنافي للرد، الانقياد لما دلت عليه، الصدق المنافي للكذب، الإخلاص المنافي للشرك، والمحبة المنافية للبغض).</p>
+                    </div>
                 </div>
 
+                <!-- 2. قسم الفتاوى (موسع لـ 10 فتاوى) -->
                 <div id="fatwaSection" style="display:none;">
                     <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
                     <h3 style="background: #16a085; color: white; padding: 15px; text-align: center; border-radius: 10px; margin-top:0;">📚 الفتاوى الشائعة</h3>
-                    <details class="extra-details"><summary class="extra-summary">1. أحكام الطلاق وطلاق الغضبان</summary><div class="extra-content">الطلاق صريح وكناية. اللفظ الصريح مثل (أنت طالق) يقع به الطلاق مباشرة. أما <strong>طلاق الغضبان</strong>، فيقسمه العلماء إلى ثلاثة أقسام: الغضب الخفيف يقع طلاقه. الغضب الإغلاقي الشديد (يفقد فيه الرجل وعيه تماماً) لا يقع طلاقه. الغضب المتوسط تجب فيه مراجعة المحاكم.</div></details>
-                    <details class="extra-details"><summary class="extra-summary">2. أحكام زكاة الفطر ومقدارها</summary><div class="extra-content">زكاة الفطر فريضة على كل مسلم. مقدارها صاع من طعام أهل البلد (حوالي 2.5 كغم). وأجاز كثير من العلماء إخراجها نقداً تيسيراً على الفقراء.</div></details>
+                    
+                    <details class="extra-details">
+                        <summary class="extra-summary">1. أحكام الطلاق وطلاق الغضبان</summary>
+                        <div class="extra-content">الطلاق صريح وكناية. اللفظ الصريح مثل (أنت طالق) يقع به الطلاق مباشرة. أما <strong>طلاق الغضبان</strong>، فيقسمه العلماء إلى ثلاثة أقسام: الغضب الخفيف يقع طلاقه. الغضب الإغلاقي الشديد (يفقد فيه الرجل وعيه تماماً) لا يقع طلاقه لقول النبي ﷺ: «لَا طَلَاقَ وَلَا عِتَاقَ فِي إِغْلَاقٍ». الغضب المتوسط تجب فيه مراجعة المحاكم الشرعية.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">2. أحكام زكاة الفطر ومقدارها</summary>
+                        <div class="extra-content">زكاة الفطر فريضة على كل مسلم. <strong>مقدارها:</strong> صاع من طعام أهل البلد وهو ما يعادل تقريباً (2.5 كيلو غرام) عن الشخص الواحد. <strong>إخراجها نقداً:</strong> أجاز كثير من العلماء إخراجها نقداً تيسيراً على الفقراء. ووقت إخراجها الأفضل صباح يوم العيد قبل الصلاة، ويجوز تقديمها قبله بيوم أو يومين.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">3. شروط التوبة النصوح من الكبائر</summary>
+                        <div class="extra-content">مهما عظم ذنب العبد فإن عفو الله أعظم. شروط التوبة النصوح هي: 1. الإقلاع الفوري عن الذنب. 2. الندم الشديد بالقلب. 3. العزم الأكيد على عدم العودة إليه. 4. رد الحقوق لأصحابها (في حال كانت المعصية سرقة أو ظلم للعباد).</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">4. قضاء الصيام لمن أفطر عمداً في رمضان</summary>
+                        <div class="extra-content">من أفطر في رمضان عمداً بدون عذر شرعي فقد ارتكب إثماً عظيماً. يجب عليه التوبة النصوح، والاستغفار. ويجب عليه قضاء الأيام التي أفطرها يوماً بيوم. أما إذا كان الإفطار بالجماع في نهار رمضان، فيجب عليه القضاء مع الكفارة المغلظة (عتق رقبة، فإن لم يجد فصيام شهرين متتابعين، فإن لم يستطع فإطعام ستين مسكيناً).</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">5. حكم تارك الصلاة تكاسلاً</summary>
+                        <div class="extra-content">الصلاة عماد الدين. تارك الصلاة جحوداً لوجوبها كافر بإجماع المسلمين. أما من تركها تكاسلاً وتهاوناً (وهو يقر بوجوبها) فقد اختلف فيه العلماء، فمنهم من كفّره كفراً مخرجاً من الملة، ومنهم من قال إنه ارتكب كبيرة أعظم من الزنا والسرقة وشرب الخمر ولكنه لا يكفر. وفي كلتا الحالتين، أمره خطير جداً ويجب عليه التوبة الفورية والعودة للصلاة.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">6. شروط المسح على الخفين والجوربين (الجوارب)</summary>
+                        <div class="extra-content">يجوز المسح على الجوارب في الوضوء بدلاً من غسل القدمين بشروط: 1. أن يلبسهما على طهارة كاملة (بعد وضوء أو غسل). 2. أن يكون المسح في الحدث الأصغر (الوضوء) لا الأكبر (كالجنابة). 3. أن يكون ضمن المدة المحددة: يوم وليلة للمقيم (24 ساعة تبدأ من أول مسح)، وثلاثة أيام بلياليها للمسافر.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">7. حكم قراءة القرآن للحائض</summary>
+                        <div class="extra-content">يحرم على الحائض مس المصحف الشريف المكتوب باللغة العربية. أما قراءة القرآن من غير مس للمصحف (كأن تقرأ من حفظها، أو من الهاتف، أو بحائل كالقفازين) فالراجح من أقوال العلماء جواز ذلك حتى لا تنسى حفظها ولتنال الأجر، خاصة إذا كانت معلمة أو طالبة.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">8. حكم الحلف بغير الله أو بالنبي</summary>
+                        <div class="extra-content">الحلف بغير الله (مثل الحلف بالنبي، أو بالكعبة، أو بحياة الأم، أو بالشرف، أو بالنعمة) محرم شرعاً وهو من الشرك الأصغر. قال ﷺ: «من كان حالفاً فليحلف بالله أو ليصمت». ومن حلف بغير الله متعمداً يجب عليه أن يقول: "لا إله إلا الله" كفارة لذلك.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">9. هل يجوز إعطاء الزكاة للإخوة والأقارب؟</summary>
+                        <div class="extra-content">إعطاء الزكاة للأقارب (غير الأصول كالأب والأم، والفروع كالأبناء) جائز بل هو مستحب إذا كانوا فقراء محتاجين، ويكون لك أجران: أجر الزكاة وأجر صلة الرحم. فيجوز إعطاؤها للأخ، الأخت، العم، والخال إذا انطبقت عليهم شروط الفقر ولم تكن نفقتهم واجبة عليك.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">10. حكم التعامل مع البنوك بفوائد ثابتة</summary>
+                        <div class="extra-content">الودائع البنكية التي تعطي نسبة فائدة ثابتة ومحددة مسبقاً بناءً على رأس المال (مثل 10% سنوياً) تعتبر من الربا المحرم شرعاً. والبديل الشرعي هو الحسابات الاستثمارية في البنوك الإسلامية التي تعتمد على مبدأ "المضاربة"، حيث تتغير نسبة الربح والخسارة بناءً على نتائج المشاريع.</div>
+                    </details>
+                    
+                    <!-- قالب فارغ لإضافة فتاوى جديدة بنفسك -->
+                    <!--
+                    <details class="extra-details">
+                        <summary class="extra-summary">عنوان الفتوى الجديدة هنا</summary>
+                        <div class="extra-content">اكتب نص الفتوى هنا...</div>
+                    </details>
+                    -->
                 </div>
 
+                <!-- 3. قسم القصص (موسع لـ 10 قصص طويلة) -->
                 <div id="storiesSection" style="display:none;">
                     <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
                     <h3 style="background: #2980b9; color: white; padding: 15px; text-align: center; border-radius: 10px; margin-top:0;">📜 القصص النبوية وقصص الصالحين</h3>
-                    <details class="extra-details"><summary class="extra-summary">1. عظمة الوفاء بالوعد وقصة نبي الله إسماعيل</summary><div class="extra-content">واعد نبي الله إسماعيل عليه السلام رجلاً من قومه في مكان معين ليلتقيا فيه. ذهب إسماعيل في الوقت المحدد، ولكن الرجل نسي الموعد. واستمر الحال هكذا لثلاثة أيام وهو صابر ينتظر وفاءً بوعده. <br><span class="quran-verse">قال تعالى: {إِنَّهُ كَانَ صَادِقَ الْوَعْدِ وَكَانَ رَسُولًا نَّبِيًّا}</span></div></details>
-                    <details class="extra-details"><summary class="extra-summary">2. قصة صبر نبي الله أيوب الشديد</summary><div class="extra-content">ابتلى الله عز وجل نبيه أيوب فخسر أمواله وتجارته، ثم مات أولاده جميعاً، وأصيب بمرض جسدي شديد استمر <strong>ثمانية عشر عاماً</strong>! ولم يتذمر أبداً، ولما تضرع لربه شفاه الله ورد عليه أهله وأمواله.</div></details>
-                </div>
+                    
+                    <details class="extra-details">
+                        <summary class="extra-summary">1. عظمة الوفاء بالوعد وقصة نبي الله إسماعيل</summary>
+                        <div class="extra-content">واعد نبي الله إسماعيل عليه السلام رجلاً من قومه في مكان معين ليلتقيا فيه. ذهب إسماعيل في الوقت المحدد، ولكن الرجل نسي الموعد وانشغل. مرت الساعات وغابت الشمس وجاء الليل، وإسماعيل باقٍ في مكانه لم يغادره خشية أن يأتي الرجل فلا يجده! واستمر الحال هكذا لثلاثة أيام وهو صابر ينتظر وفاءً بوعده. وبعد أيام، مر الرجل بالصدفة ففوجئ بإسماعيل جالساً هناك، فصعق واعتذر، فقال له إسماعيل: "لم أكن لأغادر مكاني حتى تأتي، لأني واعدتك أن أكون هنا".<br><span class="quran-verse">قال تعالى: {إِنَّهُ كَانَ صَادِقَ الْوَعْدِ وَكَانَ رَسُولًا نَّبِيًّا}</span></div>
+                    </details>
 
-                <!-- القسم الجديد لبوصلة القبلة -->
-                <div id="qiblaSection" style="display:none; text-align: center;">
-                    <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
-                    <h3 style="background: var(--qibla-color); color: white; padding: 15px; text-align: center; border-radius: 10px; margin-top:0;">🧭 اتجاه القبلة الكريمة</h3>
-                    <p style="color: var(--text-main); font-weight: bold; font-size: 1.1em;">ضع هاتفك بشكل مسطح للحصول على أدق نتيجة.</p>
+                    <details class="extra-details">
+                        <summary class="extra-summary">2. قصة صبر نبي الله أيوب الشديد</summary>
+                        <div class="extra-content">ابتلى الله عز وجل نبيه أيوب فخسر أمواله وتجارته، ثم مات أولاده جميعاً في يوم واحد، وأصيب بمرض جلدي وجسدي شديد تساقط بسببه لحمه. استمر مرضه <strong>ثمانية عشر عاماً</strong>! هجره القريب والبعيد ولم يبقَ معه سوى زوجته الوفية الصابرة. ولما تضرع لربه مناجياً: "أني مسني الضر وأنت أرحم الراحمين"، أمره الله أن يضرب الأرض بقدمه فنبع ماء اغتسل منه فشُفي وعادت إليه صحته وشبابه ورد الله عليه أهله وأمواله مضاعفة جزاء صبره.</div>
+                    </details>
                     
-                    <div class="qibla-compass-container">
-                        <div class="compass-north">ش</div>
-                        <div class="compass-east">ق</div>
-                        <div class="compass-west">غ</div>
-                        <div class="compass-south">ج</div>
-                        <div class="center-dot"></div>
-                        
-                        <div class="kaaba-pointer" id="kaabaPointer">
-                            <div class="kaaba-icon">🕋</div>
-                            <div class="kaaba-line"></div>
-                        </div>
-                    </div>
+                    <details class="extra-details">
+                        <summary class="extra-summary">3. قصة توبة قاتل المائة نفس</summary>
+                        <div class="extra-content">رجل من بني إسرائيل قتل 99 نفساً، فأراد التوبة فسأل عن أعلم أهل الأرض فدلوه على راهب (عابد وليس عالماً)، فسأله هل لي من توبة؟ فقال الراهب: لا! فقتله وكمل به المائة. ثم سأل مرة أخرى فدلوه على عالم، فسأله فقال له العالم: "ومن يحول بينك وبين التوبة؟ انطلق إلى أرض كذا وكذا فإن بها أناساً يعبدون الله فاعبد الله معهم ولا ترجع لأرضك فإنها أرض سوء". انطلق الرجل وفي منتصف الطريق نزل به الموت، فاختصمت فيه ملائكة الرحمة وملائكة العذاب. فأرسل الله مَلَكاً يحكم بينهم بأن يقيسوا المسافة، فوجدوه أقرب لأرض التوبة بشبر واحد، فقبضته ملائكة الرحمة وغفر الله له.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">4. قصة الثلاثة الذين أُغلقت عليهم الصخرة في الغار</summary>
+                        <div class="extra-content">أوى ثلاثة رجال في الماضي إلى غار ليحتموا من المطر، فانحدرت صخرة ضخمة أغلقت باب الغار تماماً ولا يستطيعون زحزحتها. فقالوا: لن ينجينا إلا أن ندعو الله بصالح أعمالنا. 
+                        <br>فدعا الأول ببره الشديد بوالديه حيث كان لا يطعم أبناءه حتى يطعم والديه، فانفرجت الصخرة قليلاً. ودعا الثاني بعفته عن ابنة عمه بعد أن تمكن منها وتركها لوجه الله، فانفرجت الصخرة أكثر. ودعا الثالث بأمانته حيث نمّى أجرة عامل عنده حتى أصبحت قطيعاً من البقر والغنم وسلمها له كاملة، فانفرجت الصخرة تماماً وخرجوا يمشون. القصة تعلمنا عظمة الإخلاص وتفريج الكربات بالعمل الصالح.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">5. قصة إسلام عمر بن الخطاب رضي الله عنه</summary>
+                        <div class="extra-content">كان عمر بن الخطاب قبل إسلامه شديد العداوة للمسلمين، وفي يوم خرج متوشحاً سيفه يريد قتل النبي ﷺ. في الطريق التقى برجل أخبره أن أخته فاطمة وزوجها قد أسلما. فاستشاط غضباً وذهب لبيت أخته، فسمعهم يقرؤون سورة طه. اقتحم البيت وضرب زوج أخته، ولما دافعت أخته ضربها حتى شج وجهها ونزفت. ولما رأى الدم ندم، وطلب الصحيفة ليقرأها، فاشترطت أن يغتسل، ففعل وقرأ: "طه * ما أنزلنا عليك القرآن لتشقى". فاهتز قلبه وقال: "ما أحسن هذا الكلام!". وانطلق للنبي ﷺ في دار الأرقم، فأسلم وعزّ به الإسلام والمسلمون.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">6. قصة ماشطة ابنة فرعون والثبات على الحق</summary>
+                        <div class="extra-content">كانت هناك امرأة تمشط شعر ابنة فرعون، فسقط المشط من يدها فقالت: "بسم الله". فقالت ابنة فرعون: الله أبي؟ قالت الماشطة: بل ربي وربك ورب أبيك هو الله. فأخبرت فرعون، فاستدعاها وأمر بإحضار قدر من النحاس أُغلي فيه الزيت، وأمر بإلقاء أبنائها واحداً تلو الآخر أمام عينيها لترتد عن دينها، فثبتت! حتى جاء دور طفلها الرضيع الذي تحمله، فترددت كأم، فأنطق الله الرضيع وقال: "يا أماه اصبري فإنك على الحق". فأُلقيت مع رضيعها في الزيت المغلي. ولما أسري بالنبي ﷺ شمّ رائحة طيبة جداً في السماء، فسأل جبريل فقال: هذه رائحة ماشطة ابنة فرعون وأولادها.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">7. قصة جليبيب رضي الله عنه</summary>
+                        <div class="extra-content">كان جليبيب رجلاً من الصحابة، فقيراً، دميماً (ليس وسيماً)، ولا أهل له. عرض عليه النبي ﷺ الزواج، فخطب له ابنة رجل من الأنصار، فرفض الأبوان لفقره ودمامته، لكن الفتاة المؤمنة قالت: "أتردون على رسول الله أمره؟ ادفعوني إليه". فتزوجها. وبعد أيام قليلة، نادى منادي الجهاد، فخرج جليبيب واستشهد بعد أن قتل سبعة من المشركين. بحث عنه النبي ﷺ بنفسه، ولما وجده قال كلمته الخالدة: "هذا مني وأنا منه"، وحمله النبي على ساعديه حتى حُفر له قبره. ولم يكن في المدينة أرملة أنفق منها من تلك الفتاة التي تزوجها ببركة طاعتها لرسول الله.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">8. قصة توبة كعب بن مالك</summary>
+                        <div class="extra-content">تخلّف كعب بن مالك عن غزوة تبوك كسلاً. ولما عاد النبي ﷺ، اعتذر المنافقون كذباً فقبل منهم، لكن كعب قرر الصدق وقال: "يا رسول الله ما كان لي من عذر". أمر النبي بمقاطعته، فقاطعه المجتمع كله، حتى زوجته، وضاقت عليه الأرض لمدة خمسين يوماً. وفي اليوم الخمسين، أنزل الله توبته في القرآن بآيات تتلى ليوم القيامة جزاء صدقه، فاستقبله النبي بوجه يبرق كالقمر فرحاً بتوبته.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">9. قصة الصحابية أم سليم وخبر وفاة ابنها</summary>
+                        <div class="extra-content">مرض ابن الصحابي أبي طلحة وزوجته أم سليم، وخرج أبو طلحة للسفر. توفي الطفل، فقامت أم سليم وغسلته وكفنته وسجته، وقالت لأهل البيت: "لا تخبروا أبا طلحة حتى أكون أنا التي تخبره". ولما عاد ليلاً سأل عن الغلام، فقالت: "هو أسكن مما كان" (تقصد مات لكنه فهم أنه نام). وقدمت له العشاء وتزينت له ونام معها. وفي الصباح قالت له بحكمة: "يا أبا طلحة، أرأيت لو أن قوماً أعاروا عاريتهم لأهل بيت، فطلبوا عاريتهم، ألهم أن يمنعوهم؟" قال: لا. قالت: "فاحتسب ابنك". فغضب وذهب للنبي يشتكي، فدعا لهما النبي بالبركة في ليلتهما، فرزقهم الله بـعشرة أبناء كلهم حفظة للقرآن.</div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">10. قصة الأقرع والأبرص والأعمى</summary>
+                        <div class="extra-content">ابتلى الله ثلاثة من بني إسرائيل (أبرص، وأقرع، وأعمى). فأرسل إليهم مَلَكاً، فمسح الأبرص وأعطاه لوناً حسناً وناقة عُشراء (حامل)، ومسح الأقرع وأعطاه شعراً حسناً وبقرة حاملاً، ومسح الأعمى فرد الله بصره وأعطاه شاة. بعد سنوات أصبحوا أثرياء جداً. عاد إليهم المَلَك في صورة رجل فقير ليختبرهم. فرفض الأبرص والأقرع إعطاءه وتكبرا وأنكرا نعمة الله وقالا: ورثنا هذا المال كابراً عن كابر. فدعا عليهما المَلَك فرجعا لمرضهما وفقرهما. ولما ذهب للأعمى وطلب منه، قال الأعمى: "قد كنت أعمى فرد الله بصري وفقيرًا فأغناني، فخذ ما شئت ودع ما شئت". فقال المَلَك: أمسك مالك فقد رضي الله عنك وسخط على صاحبيك.</div>
+                    </details>
                     
-                    <p id="qiblaStatus" style="font-size: 1.2em; font-weight: bold; color: var(--primary); margin-top: 15px;">اضغط على الزر لتفعيل الحساسات</p>
-                    <button onclick="startCompass()" style="background: #d4af37; border: none; padding: 15px 30px; border-radius: 10px; font-family: 'Tajawal'; font-weight: 900; font-size: 1.2em; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-top: 10px;">تفعيل البوصلة 🧭</button>
+                    <!-- قالب فارغ لإضافة قصص جديدة بنفسك -->
+                    <!--
+                    <details class="extra-details">
+                        <summary class="extra-summary">عنوان القصة الجديدة هنا</summary>
+                        <div class="extra-content">اكتب نص القصة هنا...</div>
+                    </details>
+                    -->
                 </div>
             </div>
 
+            <!-- قسم الأدعية الذكية المتجددة -->
             <div id="aiDuas" class="tab-content" style="display:none;">
                 <div class="ai-dua-box">
                     <div class="ai-dua-text" id="dynamicDuaBox">جاري تحميل الدعاء...</div>
@@ -428,16 +526,18 @@
                 </div>
             </div>
 
+            <!-- قسم القرآن الكريم المعدل -->
             <div id="quran" class="tab-content" style="display:none;">
-                <div style="background-color: var(--bg-light); border: 2px solid var(--quran-color); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; overflow: hidden; width: 100%; box-sizing: border-box;">
+                <!-- صندوق حفظ الآيات الجديد -->
+                <div style="background-color: var(--bg-light); border: 2px solid var(--quran-color); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
                     <h4 style="color: var(--quran-color); margin-top: 0; margin-bottom: 15px; font-size: 1.2em;">🔖 حفظ موضع القراءة</h4>
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px; width: 100%;">
-                        <input type="text" id="bmSurah" placeholder="اسم السورة" style="flex: 1; min-width: 0; width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Tajawal'; font-size: 1em; box-sizing: border-box;">
-                        <input type="number" id="bmAyah" placeholder="رقم الآية" style="flex: 1; min-width: 0; width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Tajawal'; font-size: 1em; box-sizing: border-box;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <input type="text" id="bmSurah" placeholder="اسم السورة" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Tajawal'; font-size: 1em;">
+                        <input type="number" id="bmAyah" placeholder="رقم الآية" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Tajawal'; font-size: 1em;">
                     </div>
-                    <div style="display: flex; gap: 10px; width: 100%;">
-                        <button class="btn-save-bm" onclick="saveBookmark()" style="flex: 1; min-width: 0; white-space: nowrap;">حفظ الموضع</button>
-                        <button class="btn-load-bm" onclick="loadBookmark()" style="flex: 1; min-width: 0; white-space: nowrap;">عرض المحفوظ</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-save-bm" onclick="saveBookmark()">حفظ الموضع</button>
+                        <button class="btn-load-bm" onclick="loadBookmark()">عرض المحفوظ</button>
                     </div>
                     <p id="savedBookmarkDisplay" style="margin-top: 15px; font-weight: bold; color: var(--text-main); font-size: 1em;"></p>
                 </div>
@@ -464,19 +564,57 @@
 
 <script>
     const surahNames = ["الفاتحة","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود","يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون","النور","الفرقان","الشعراء","النمل","القصص","العنكبوت","الروم","لقمان","السجدة","الأحزاب","سبأ","فاطر","يس","الصافات","ص","الزمر","غافر","فصلت","الشورى","الزخرف","الدخان","الجاثية","الأحقاف","محمد","الفتح","الحجرات","ق","الذاريات","الطور","النجم","القمر","الرحمن","الواقعة","الحديد","المجادلة","الحشر","الممتحنة","الصف","الجمعة","المنافقون","التغابن","الطلاق","التحريم","الملك","القلم","الحاقة","المعارج","نوح","الجن","المزمل","المدثر","القيامة","الإنسان","المرسلات","النبأ","النازعات","عبس","التكوير","الإنفطار","المطففين","الانشقاق","البروج","الطارق","الأعلى","الغاشية","الفجر","البلد","الشمس","الليل","الضحى","الشرح","التين","العلق","القدر","البينة","الزلزلة","العاديات","القارعة","التكاثر","العصر","الهمزة","الفيل","قريش","الماعون","الكوثر","الكافرون","النصر","المسد","الإخلاص","الفلق","الناس"];
-    const aiDynamicDuas = ["اللهم إني أسألك رضاك والجنة.", "اللهم اشفِ مرضانا وارحم موتانا.", "يا حي يا قيوم برحمتك أستغيث."];
-    const deadDuas = ["اللهم اغفر لسعاد خليل إبراهيم وارحمها.", "اللهم اجعل قبرها روضة من رياض الجنة.", "اللهم آنس وحشتها وارحم غربتها."];
+
+    const aiDynamicDuas = [
+        "اللهم إني أسألك رضاك والجنة، وأعوذ بك من سخطك والنار.",
+        "اللهم اشفِ مرضانا ومرضى المسلمين، وارحم موتانا وموتى المسلمين.",
+        "يا حي يا قيوم برحمتك أستغيث أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.",
+        "اللهم إني أسألك العفو والعافية في الدنيا والآخرة.",
+        "ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.",
+        "اللهم اغفر للمؤمنين والمؤمنات والمسلمين والمسلمات الأحياء منهم والأموات."
+    ];
+
+    const deadDuas = [
+        "اللهم اغفر لسعاد خليل إبراهيم وارحمها، وعافها واعف عنها، وأكرم نزلها، ووسع مدخلها.",
+        "اللهم اغسلها بالماء والثلج والبرد، ونقها من الخطايا كما ينقى الثوب الأبيض من الدنس.",
+        "اللهم أبدلها داراً خيراً من دارها، وأهلاً خيراً من أهلها.",
+        "اللهم اجعل قبرها روضة من رياض الجنة، ولا تجعله حفرة من حفر النار.",
+        "اللهم آنس وحشتها، وارحم غربتها، وأنر ظلمتها."
+    ];
+
     const azkarData = {
-        morning: [{t: "آية الكرسي", c: 1}, {t: "المعوذات", c: 3}],
-        evening: [{t: "آية الكرسي", c: 1}, {t: "المعوذات", c: 3}],
-        generalDuas: [{t: "اللهم إنك عفو تحب العفو فاعف عنا.", c: 1}]
+        morning: [
+            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
+            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ هُوَ اللَّهُ أَحَدٌ... (الإخلاص)", c: 3},
+            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ... (الفلق)", c: 3},
+            {t: "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ. قُلْ أَعُوذُ بِرَبِّ النَّاسِ... (الناس)", c: 3},
+            {t: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لا إِلَهَ إِلَّا اللَّهُ...", c: 1}
+        ],
+        evening: [
+            {t: "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ... (آية الكرسي)", c: 1},
+            {t: "المعوذات (الإخلاص، الفلق، الناس)", c: 3},
+            {t: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لا إِلَهَ إِلَّا اللَّهُ...", c: 1}
+        ],
+        generalDuas: [
+            {t: "اللهم إني أسألك العفو والعافية في الدنيا والآخرة.", c: 1},
+            {t: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.", c: 1},
+            {t: "اللهم إنك عفو كريم تحب العفو فاعف عنا.", c: 1}
+        ]
     };
-    const tasbeehList = ["سبحان الله", "الحمد لله", "لا إله إلا الله", "الله أكبر"];
+
+    const tasbeehList = ["سبحان الله", "الحمد لله", "لا إله إلا الله", "الله أكبر", "أستغفر الله", "لا حول ولا قوة إلا بالله"];
     let tasbeehIndex = 0, rosaryCounter = 0;
 
     const cities = {
         "Baghdad": {lat: 33.3128, lon: 44.3615}, "Ramadi": {lat: 33.4319, lon: 43.2936},
-        "Mosul": {lat: 36.3489, lon: 43.1577}, "Basra": {lat: 30.5081, lon: 47.7835}
+        "Mosul": {lat: 36.3489, lon: 43.1577}, "Basra": {lat: 30.5081, lon: 47.7835}, 
+        "Erbil": {lat: 36.1926, lon: 44.0006}, "Kirkuk": {lat: 35.4681, lon: 44.3922}, 
+        "Sulaymaniyah": {lat: 35.5577, lon: 45.4361}, "Duhok": {lat: 36.8525, lon: 42.9941}, 
+        "Karbala": {lat: 32.6160, lon: 44.0249}, "Najaf": {lat: 32.0096, lon: 44.3387}, 
+        "Nasiriyah": {lat: 31.0580, lon: 46.2573}, "Amarah": {lat: 31.8363, lon: 47.1458}, 
+        "Kut": {lat: 32.5056, lon: 45.8246}, "Diwaniyah": {lat: 31.9943, lon: 44.9243}, 
+        "Hilla": {lat: 32.4728, lon: 44.4312}, "Baqubah": {lat: 33.7416, lon: 44.6233}, 
+        "Samawah": {lat: 31.3195, lon: 45.2849}, "Tikrit": {lat: 34.6071, lon: 43.6823}
     };
 
     let todayTimes = { fajr: null, dhuhr: null, asr: null, maghrib: null, isha: null };
@@ -485,15 +623,14 @@
     let countdownInterval;
     let userLat = null;
     let userLon = null;
-    
-    // متغير الصوت الصامت للخلفية
-    let bgAudioCtx = null;
 
     function updateClock() {
         const now = new Date();
         const timeString = now.toLocaleTimeString('ar-IQ', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
         const clockElement = document.getElementById('currentTimeDisplay');
-        if(clockElement) clockElement.innerText = timeString;
+        if(clockElement) {
+            clockElement.innerText = timeString;
+        }
     }
     setInterval(updateClock, 1000); 
 
@@ -501,18 +638,29 @@
         document.getElementById('year').innerText = new Date().getFullYear();
         if(localStorage.getItem('themeMode') === 'dark') { document.body.classList.add('dark-mode'); document.getElementById('Btn').innerText = '🌙'; }
         
+        let htmlDuas = '';
+        const scrollingDuasText = [
+            "اللهم اغفر لسعاد خليل إبراهيم وارحمها", 
+            "اللهم اجعل قبرها روضة من رياض الجنة", 
+            "اللهم آنس وحشتها وارحم غربتها", 
+            "اللهم أظلها تحت ظل عرشك يوم لا ظل إلا ظلك"
+        ];
+        for(let i=0; i<30; i++) { scrollingDuasText.forEach(d => htmlDuas += `<span class="dua-item">🤲 ${d}</span>`); }
+        document.getElementById('scrollingDuas').innerHTML = htmlDuas;
+        
         generateNewDua();
         generateQR(); 
         renderAzkar(); 
         initQuran(); 
         renderDeadDuas();
+        
         loadBookmark();
         updateClock();
         
         if(localStorage.getItem("ramadan_city")) {
             document.getElementById("city").value = localStorage.getItem("ramadan_city");
         }
-        loadTimes(true); 
+        getLocation();
     }
 
     function generateNewDua() {
@@ -520,9 +668,9 @@
         document.getElementById("dynamicDuaBox").innerText = `"${randomAiDua}"`;
     }
 
-    function getLocation(isManual = false) {
+    function getLocation() {
         if (navigator.geolocation) {
-            if(isManual) document.getElementById("todayDateDisplay").innerHTML = "📍 جاري تحديد موقعك...";
+            document.getElementById("todayDateDisplay").innerHTML = "📍 جاري تحديد موقعك التلقائي...";
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     userLat = position.coords.latitude;
@@ -539,95 +687,67 @@
                     citySelect.value = "gps";
                     
                     loadTimes(false); 
-                    if(isManual) alert("تم تحديد موقعك بدقة!");
                 },
                 (error) => {
-                    if(isManual) alert("تعذر تحديد الموقع تلقائياً.");
+                    alert("تعذر تحديد الموقع تلقائياً، سيتم الاعتماد على المدينة المختارة.");
                     loadTimes(true); 
-                },
-                { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+                }
             );
         } else {
-            if(isManual) alert("جهازك لا يدعم الموقع.");
+            alert("جهازك لا يدعم ميزة تحديد الموقع.");
             loadTimes(true);
         }
     }
 
-    // --- حساب القبلة والبوصلة ---
-    function getQiblaAngle(lat, lon) {
-        // إحداثيات الكعبة المشرفة
-        const meccaLat = 21.422487 * Math.PI / 180;
-        const meccaLon = 39.826206 * Math.PI / 180;
-        const uLat = lat * Math.PI / 180;
-        const uLon = lon * Math.PI / 180;
-        
-        const dLon = meccaLon - uLon;
-        const y = Math.sin(dLon) * Math.cos(meccaLat);
-        const x = Math.cos(uLat) * Math.sin(meccaLat) - Math.sin(uLat) * Math.cos(meccaLat) * Math.cos(dLon);
-        let qibla = Math.atan2(y, x) * 180 / Math.PI;
-        return (qibla + 360) % 360;
-    }
-
-    function startCompass() {
-        if (!userLat || !userLon) {
-            alert("يرجى الضغط على زر تحديد الموقع (📍) في الشاشة الرئيسية أولاً لتعمل البوصلة بدقة.");
+    function saveBookmark() {
+        const surah = document.getElementById('bmSurah').value;
+        const ayah = document.getElementById('bmAyah').value;
+        if(surah === "" || ayah === "") {
+            alert("يرجى إدخال اسم السورة ورقم الآية أولاً.");
             return;
         }
-        
-        const qiblaAngle = getQiblaAngle(userLat, userLon);
-        document.getElementById('qiblaStatus').innerText = "تم الاتصال بالحساسات بنجاح!";
-        
-        const handleOrientation = (event) => {
-            let compassHeading = event.webkitCompassHeading || Math.abs(event.alpha - 360);
-            if (compassHeading !== null && compassHeading !== undefined) {
-                // حساب درجة الدوران بالنسبة لاتجاه الهاتف
-                let kaabaRotation = qiblaAngle - compassHeading;
-                document.getElementById('kaabaPointer').style.transform = `rotate(${kaabaRotation}deg)`;
-            }
-        };
+        localStorage.setItem('savedSurah_Noor', surah);
+        localStorage.setItem('savedAyah_Noor', ayah);
+        alert("تم حفظ موضع القراءة بنجاح!");
+        loadBookmark();
+    }
 
-        if (window.DeviceOrientationAbsoluteEvent) {
-            window.addEventListener("deviceorientationabsolute", handleOrientation, true);
-        } else if (window.DeviceOrientationEvent) {
-            window.addEventListener("deviceorientation", handleOrientation, true);
+    function loadBookmark() {
+        const savedSurah = localStorage.getItem('savedSurah_Noor');
+        const savedAyah = localStorage.getItem('savedAyah_Noor');
+        const display = document.getElementById('savedBookmarkDisplay');
+        
+        if (savedSurah && savedAyah) {
+            display.innerText = "آخر توقف: سورة " + savedSurah + " - الآية (" + savedAyah + ")";
         } else {
-            alert("للأسف، جهازك لا يدعم مستشعر البوصلة المغناطيسية.");
+            display.innerText = "لم تقم بحفظ أي موضع بعد.";
         }
     }
-    // -------------------------
-
-    // --- خدعة تشغيل التطبيق في الخلفية ---
-    function keepAppAwakeForAdhan() {
-        if (!bgAudioCtx) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if(AudioContext) {
-                bgAudioCtx = new AudioContext();
-                const oscillator = bgAudioCtx.createOscillator();
-                const gainNode = bgAudioCtx.createGain();
-                gainNode.gain.value = 0.001; // صوت صامت جداً لا يسمع
-                oscillator.connect(gainNode);
-                gainNode.connect(bgAudioCtx.destination);
-                oscillator.start();
-            }
-        }
-    }
-    // ------------------------------------
 
     function changeAdhanSound() {
         const audio = document.getElementById("adhanAudio");
+        const btn = document.getElementById("previewBtn");
         audio.src = document.getElementById("adhanSound").value;
         audio.load();
+        if (!audio.paused && btn.innerHTML.includes("إيقاف")) {
+            audio.pause(); audio.currentTime = 0; btn.innerHTML = "▶️ استماع";
+        }
     }
 
     function previewAdhan() {
         const audio = document.getElementById("adhanAudio");
         const btn = document.getElementById("previewBtn");
         if (audio.paused) {
-            audio.play().then(() => { btn.innerHTML = "⏸️ إيقاف"; }).catch(() => alert("تعذر التشغيل."));
+            audio.play().then(() => { btn.innerHTML = "⏸️ إيقاف"; btn.style.background = "#e74c3c"; }).catch(() => alert("تعذر التشغيل."));
         } else {
-            audio.pause(); audio.currentTime = 0; btn.innerHTML = "▶️ استماع"; 
+            audio.pause(); audio.currentTime = 0; btn.innerHTML = "▶️ استماع"; btn.style.background = "var(--text-secondary)";
         }
     }
+
+    document.getElementById("adhanAudio").onended = function() {
+        const btn = document.getElementById("previewBtn");
+        btn.innerHTML = "▶️ استماع"; btn.style.background = "var(--text-secondary)";
+    };
 
     function enableAdhan() {
         const audio = document.getElementById("adhanAudio");
@@ -635,11 +755,8 @@
             audio.pause(); audio.currentTime=0; adhanEnabled=true;
             const btn = document.getElementById("adhanBtn");
             btn.innerHTML = "✅ الأذان مفعل للصلوات"; btn.style.background = "#27ae60"; btn.style.color = "#fff";
-            
-            // تفعيل الصوت الصامت لمنع الأندرويد من إيقاف التطبيق
-            keepAppAwakeForAdhan();
-            
-            alert("تم تفعيل الأذان بنجاح. (لضمان عمله في الخلفية، يرجى تفعيل وضع 'غير مقيد' في إعدادات بطارية الهاتف للتطبيق).");
+            document.getElementById("previewBtn").innerHTML = "▶️ استماع"; document.getElementById("previewBtn").style.background = "var(--text-secondary)";
+            alert("تم تفعيل التنبيه بصوت الأذان بنجاح.");
             checkAdhanLoop();
         }).catch(() => alert("يجب النقر على الصفحة أولاً لتفعيل الصوت."));
     }
@@ -656,43 +773,82 @@
         }, 1000);
     }
 
-    function openDonateModal() { document.getElementById('donateModal').style.display = 'block'; }
-    function closeDonateModal() { document.getElementById('donateModal').style.display = 'none'; }
-    function openModal() { document.getElementById('azkarModal').style.display = 'block'; }
-    function closeModal() { document.getElementById('azkarModal').style.display = 'none'; }
+    function openDonateModal() { document.getElementById('donateModal').style.display = 'block'; document.getElementById('downloadBtn').style.display = 'none'; }
+    function closeDonateModal() { document.getElementById('donateModal').style.display = 'none'; document.getElementById('downloadBtn').style.display = 'block'; }
+    function openModal() { document.getElementById('azkarModal').style.display = 'block'; document.getElementById('downloadBtn').style.display = 'none'; }
+    function closeModal() { document.getElementById('azkarModal').style.display = 'none'; document.getElementById('downloadBtn').style.display = 'block'; }
     
+    function renderDeadDuas() {
+        const container = document.getElementById('deadDuasContainer');
+        let html = ''; deadDuas.forEach(dua => { html += `<div class="dead-dua-card">${dua}</div>`; });
+        container.innerHTML = html;
+    }
+
+    function initQuran() {
+        const select = document.getElementById('surahSelect');
+        select.innerHTML = '<option value="" disabled selected>📜 اختر السورة لتبدأ التلاوة...</option>';
+        surahNames.forEach((name, index) => { select.innerHTML += `<option value="${index + 1}">${index + 1}. سورة ${name}</option>`; });
+    }
+
+    async function fetchSurah(surahId) {
+        if(!surahId) return;
+        const loader = document.getElementById('quranLoader');
+        const textArea = document.getElementById('quranText');
+        loader.style.display = 'block'; textArea.innerHTML = '';
+        try {
+            const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahId}`);
+            const data = await response.json();
+            if(data.code === 200) {
+                let html = `<h2 class="surah-title">سورة ${data.data.name}</h2>`;
+                if(data.data.number !== 9 && data.data.number !== 1) html += `<span class="basmala">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>`;
+                let fullText = "";
+                data.data.ayahs.forEach(ayah => {
+                    let text = ayah.text;
+                    if(data.data.number !== 1 && data.data.number !== 9 && ayah.numberInSurah === 1) text = text.replace("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ", "");
+                    fullText += `${text} <span class="ayah-number">${ayah.numberInSurah}</span> `;
+                });
+                textArea.innerHTML = html + `<p style="text-align: justify; line-height: 2.2;">${fullText}</p>`;
+            }
+        } catch (err) { console.error(err); } finally { loader.style.display = 'none'; }
+    }
+
+    function renderAzkar() {
+        const renderGroup = (id, data) => {
+            let html = '';
+            data.forEach(z => { html += `<div class="zekr-item"><div class="zekr-text">${z.t}</div>${z.c > 1 ? `<span class="zekr-count">التكرار: ${z.c} مرات</span>` : ''}</div>`; });
+            document.getElementById(id).innerHTML = html;
+        };
+        renderGroup('morning', azkarData.morning); renderGroup('evening', azkarData.evening); renderGroup('generalDuas', azkarData.generalDuas);
+    }
+
+    function toggle() { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); document.getElementById('Btn').innerText = isDark ? '🌙' : '☀️'; localStorage.setItem('themeMode', isDark ? 'dark' : 'light'); }
+    function generateQR() { document.getElementById("qrcode").innerHTML = ""; new QRCode(document.getElementById("qrcode"), { text: "https://HUMAM7.github.io/ramadan-kareem", width: 140, height: 140, colorDark : "#114258", correctLevel : QRCode.CorrectLevel.L }); }
+    
+    // دالة فتح الأقسام الإضافية (جديدة)
     function showExtra(sectionId) {
         document.getElementById('extraMenu').style.display = 'none';
         document.getElementById('shahadaSection').style.display = 'none';
         document.getElementById('fatwaSection').style.display = 'none';
         document.getElementById('storiesSection').style.display = 'none';
-        document.getElementById('qiblaSection').style.display = 'none';
         document.getElementById(sectionId).style.display = 'block';
     }
 
+    // دالة تبديل التبويبات (محدثة)
     function switchTab(id, btn) { 
         document.querySelectorAll('.tab-content').forEach(d => d.style.display='none'); 
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
         document.getElementById(id).style.display='block'; 
         btn.classList.add('active'); 
-        if(id === 'extraPages') showExtra('extraMenu');
-    }
-
-    function saveBookmark() {
-        const surah = document.getElementById('bmSurah').value;
-        const ayah = document.getElementById('bmAyah').value;
-        if(surah === "" || ayah === "") { alert("يرجى إدخال البيانات."); return; }
-        localStorage.setItem('savedSurah', surah); localStorage.setItem('savedAyah', ayah);
-        loadBookmark();
-    }
-    function loadBookmark() {
-        const savedSurah = localStorage.getItem('savedSurah');
-        const savedAyah = localStorage.getItem('savedAyah');
-        if (savedSurah && savedAyah) { document.getElementById('savedBookmarkDisplay').innerText = "آخر توقف: سورة " + savedSurah + " - الآية (" + savedAyah + ")"; }
+        
+        // عند فتح قسم الأقسام الإضافية، نضمن ظهور القائمة الرئيسية
+        if(id === 'extraPages') {
+            showExtra('extraMenu');
+        }
     }
     
     function increaseRosary() { rosaryCounter++; if (rosaryCounter > 33) { rosaryCounter = 0; tasbeehIndex = (tasbeehIndex + 1) % tasbeehList.length; document.getElementById('currentTasbeeh').innerText = tasbeehList[tasbeehIndex]; } document.getElementById('rosaryCount').innerText = rosaryCounter; }
     function resetRosary() { rosaryCounter = 0; document.getElementById('rosaryCount').innerText = 0; }
+
     function formatTime(t) { if (!t) return "--:--"; let [h, m] = t.split(" ")[0].split(":"); h = parseInt(h); const ampm = h >= 12 ? 'م' : 'ص'; h = h % 12 || 12; return `${h}:${m}<span style="font-size:0.8em; margin-right:4px;">${ampm}</span>`; }
 
     async function loadTimes(useCityList = false) {
@@ -701,9 +857,10 @@
             const cityKey = document.getElementById("city").value;
             if(cityKey !== "gps") {
                 localStorage.setItem("ramadan_city", cityKey);
-                lat = cities[cityKey] ? cities[cityKey].lat : 33.4319; // افتراضي الرمادي
-                lon = cities[cityKey] ? cities[cityKey].lon : 43.2936;
-            } else { lat = userLat; lon = userLon; }
+                lat = cities[cityKey].lat; lon = cities[cityKey].lon;
+            } else {
+                lat = userLat; lon = userLon; 
+            }
         } else { lat = userLat; lon = userLon; }
         
         const now = new Date();
@@ -717,6 +874,9 @@
             const data = await response.json();
             if(data.data) { 
                 const d = data.data;
+                const hijri = d.date.hijri; const gregorian = d.date.gregorian;
+                document.getElementById("todayDateDisplay").innerHTML = `📅 ${hijri.weekday.ar} - ${hijri.day} ${hijri.month.ar} ${hijri.year} هـ | ${gregorian.day}/${gregorian.month.number}/${gregorian.year} م`;
+
                 todayTimes.fajr = d.timings.Fajr.split(" ")[0]; todayTimes.dhuhr = d.timings.Dhuhr.split(" ")[0];
                 todayTimes.asr = d.timings.Asr.split(" ")[0]; todayTimes.maghrib = d.timings.Maghrib.split(" ")[0]; todayTimes.isha = d.timings.Isha.split(" ")[0];
                 
@@ -726,7 +886,7 @@
                 
                 updatePrayerTimesUI();
             } 
-        } catch (err) { }
+        } catch (err) { document.getElementById("todayDateDisplay").innerHTML = '❌ لا يوجد اتصال بالإنترنت لتحديث الأوقات.'; }
     }
 
     function updatePrayerTimesUI() {
@@ -751,14 +911,18 @@
                 document.querySelectorAll('.time-unit').forEach(el => el.classList.remove('active-prayer'));
 
                 if (nextPrayer) { 
-                    target = nextPrayer.t; label = `متبقي لرفع أذان ${nextPrayer.l}`; activeUnitId = nextPrayer.id;
+                    target = nextPrayer.t; 
+                    label = `متبقي لرفع أذان ${nextPrayer.l}`; 
+                    activeUnitId = nextPrayer.id;
                 } else { 
                     label = "متبقي لرفع أذان الفجر"; 
                     let d = new Date(); d.setDate(d.getDate() + 1); const [h,m] = todayTimes.fajr.split(":"); d.setHours(h,m,0); target = d.getTime(); 
                     activeUnitId = "unit-fajr";
                 }
 
-                if(document.getElementById(activeUnitId)) document.getElementById(activeUnitId).classList.add('active-prayer');
+                if(document.getElementById(activeUnitId)) {
+                    document.getElementById(activeUnitId).classList.add('active-prayer');
+                }
 
                 const diff = target - nowTime; if(diff < 0) return;
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -770,15 +934,14 @@
         }, 1000);
     }
 
-    function shareWhatsapp() { window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent("تطبيق رفيق المسلم (صدقة جارية عن روح المرحومة سعاد خليل إبراهيم): https://HUMAM7.github.io/ramadan-kareem")); }
-    function renderDeadDuas() { document.getElementById('deadDuasContainer').innerHTML = deadDuas.map(d => `<div class="dead-dua-card">${d}</div>`).join(''); }
-    function initQuran() { document.getElementById('surahSelect').innerHTML = '<option value="" disabled selected>📜 اختر السورة لتبدأ التلاوة...</option>' + surahNames.map((n, i) => `<option value="${i+1}">${i+1}. سورة ${n}</option>`).join(''); }
-    async function fetchSurah(id) { /* الكود الأصلي لجلب السورة من الإنترنت يعمل بنجاح... */ }
-    function renderAzkar() { /* الكود الأصلي لجلب الأذكار يعمل بنجاح... */ }
-    function toggle() { document.body.classList.toggle('dark-mode'); localStorage.setItem('themeMode', document.body.classList.contains('dark-mode') ? 'dark' : 'light'); }
-    function generateQR() { new QRCode(document.getElementById("qrcode"), { text: "https://HUMAM7.github.io/ramadan-kareem", width: 140, height: 140, colorDark : "#114258" }); }
+    function shareWhatsapp() {
+        var url = "https://HUMAM7.github.io/ramadan-kareem";
+        var text = "تطبيق رفيق المسلم (صدقة جارية عن روح المرحومة سعاد خليل إبراهيم): " + url;
+        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text));
+    }
 
     window.onload = init;
 </script>
+
 </body>
 </html>
