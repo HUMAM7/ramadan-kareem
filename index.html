@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYRJRL2XCR"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYRJRL2XCR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -23,8 +24,8 @@
         :root {
             --primary: #114258;
             --primary-light: #1a5f7a;
-            --accent: #d4af37; /* ذهبي */
-            --bg-body: #f0f4f8; /* فاتح */
+            --accent: #d4af37;
+            --bg-body: #f0f4f8;
             --bg-container: #ffffff;
             --text-main: #1a202c; 
             --text-secondary: #4a5568;
@@ -79,7 +80,6 @@
         .deceased-name { font-size: 2.5em; color: var(--primary); font-weight: 900; display: block; margin: 15px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); line-height: 1.4; letter-spacing: 1px; }
         .deceased-dua { display:block; margin-top:10px; font-size:1.2em; color: var(--text-secondary); font-weight: 700; }
         
-        /* شريط الأدعية المتحرك في الواجهة الرئيسية */
         .scrolling-duas-container { overflow: hidden; white-space: nowrap; padding: 12px 0; background: var(--primary); color: #fff; border-radius: 8px; margin-bottom: 15px; position: relative; }
         .scrolling-duas-content { display: inline-block; padding-left: 100%; animation: scroll 720s linear infinite; } 
         .dua-item { display: inline-block; padding: 0 60px; font-size: 1.2em; font-weight: bold; }
@@ -94,18 +94,8 @@
         .time-label { font-size: 1.1em; margin-top: 8px; font-weight: bold; }
         .timer-label-main { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; display: flex; justify-content: center; align-items: center; gap: 10px; color: #fff; }
 
-        /* إصلاح التظليل: إجبار اللون على أن يكون غامق للوضوح */
-        .active-prayer {
-            background: #ffffff !important;
-            border: 3px solid var(--accent) !important;
-            transform: scale(1.1);
-            z-index: 10;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .active-prayer .time-label, .active-prayer .time-value { 
-            color: #114258 !important; 
-            font-weight: 900 !important; 
-        }
+        .active-prayer { background: #ffffff !important; border: 3px solid var(--accent) !important; transform: scale(1.1); z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .active-prayer .time-label, .active-prayer .time-value { color: #114258 !important; font-weight: 900 !important; }
 
         .controls-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
         .location-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
@@ -154,12 +144,10 @@
         .modal-header { background: var(--primary); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); }
         .tab-container { display: flex; flex-wrap: wrap; background: var(--bg-light); padding: 12px; gap: 8px; justify-content: center; border-bottom: 1px solid var(--border-color); }
         
-        /* أزرار التبويبات */
         .tab-btn { flex: 1 1 20%; padding: 10px 5px; border: 2px solid transparent; background: var(--tab-bg); color: var(--tab-text); cursor: pointer; font-weight: 800; border-radius: 10px; font-size: 0.9em; text-align: center; transition: 0.2s; }
         .tab-btn.active { background: var(--azkar-color); color: white; border-color: var(--azkar-color); box-shadow: 0 4px 10px rgba(0,0,0,0.2); transform: translateY(-2px); }
         .tab-btn.quran-tab.active { background: var(--quran-color) !important; border-color: var(--quran-color) !important; }
         .tab-btn.dead-tab.active { background: var(--dead-color) !important; border-color: var(--dead-color) !important; }
-        /* تبويب الأدعية الذكية */
         .tab-btn.ai-tab { color: #d4af37; border: 1px solid #d4af37; background: transparent; }
         .tab-btn.ai-tab.active { background: linear-gradient(135deg, #114258, #1a5f7a) !important; color: white; border-color: transparent !important; }
         .tab-btn.extra-tab { background: #e67e22; color: white; }
@@ -167,12 +155,18 @@
         .modal-body { padding: 20px; overflow-y: auto; background: var(--bg-container); flex-grow: 1; position: relative; scroll-behavior: smooth; }
         .tab-content { display: none; }
         
-        /* الصندوق الذكي للأدعية */
+        /* تنسيقات الأقسام الإضافية (الفتاوى والقصص) من الداخل */
+        .extra-details { background: var(--bg-light); padding: 15px; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02); direction: rtl; }
+        .extra-summary { font-weight: 900; font-size: 1.15em; color: var(--primary); cursor: pointer; outline: none; padding: 5px; list-style-type: '🔻 '; }
+        .extra-details[open] .extra-summary { list-style-type: '🔺 '; color: var(--accent); }
+        .extra-content { padding: 15px 10px 5px 10px; font-size: 1.1em; line-height: 2; color: var(--text-main); border-top: 1px solid var(--border-color); margin-top: 10px; text-align: justify; }
+        .quran-verse { font-family: 'Amiri', serif; font-size: 1.25em; color: var(--quran-color); background: var(--quran-bg); padding: 10px; border-radius: 8px; display: block; margin: 10px 0; font-weight: bold; text-align: center;}
+        .back-btn-extra { margin-bottom: 15px; padding: 10px 20px; background-color: #e74c3c; color: white; border: none; border-radius: 8px; font-weight: bold; font-family: 'Tajawal'; font-size: 1.1em; cursor: pointer; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; text-align: center;}
+
         .ai-dua-box { background: linear-gradient(135deg, var(--primary-light), var(--primary)); color: white; border-radius: 15px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative; overflow: hidden; margin-bottom: 20px; border: 2px solid var(--accent); }
         .ai-dua-text { font-family: 'Amiri', serif; font-size: 1.8em; font-weight: bold; line-height: 1.8; margin-bottom: 20px; }
         .btn-ai-refresh { background: var(--accent); color: #000; border: none; padding: 12px 25px; border-radius: 30px; font-family: 'Tajawal'; font-weight: 900; font-size: 1.1em; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .btn-ai-refresh:active { transform: scale(0.95); }
-
+        
         .zekr-item { background: var(--bg-light); padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--border-color); border-right: 6px solid var(--azkar-color); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .zekr-text { font-size: 1.4em; line-height: 2; color: var(--text-main); font-family: 'Amiri', serif; font-weight: bold; }
         .zekr-count { font-size: 1em; color: white; font-weight: 900; display: block; margin-top: 15px; background: var(--azkar-color); width: fit-content; padding: 5px 20px; border-radius: 20px; }
@@ -304,6 +298,7 @@
     </div>
 </div>
 
+<!-- النوافذ المنبثقة (Modal) -->
 <div id="donateModal" class="modal-overlay" style="z-index: 10000;">
     <div class="modal-content" style="height: auto; max-height: 80vh;">
         <div class="modal-header" style="background: var(--donate-color);">
@@ -345,15 +340,102 @@
         </div>
         
         <div class="modal-body" id="modalBody">
+            
+            <!-- تبويب الأقسام الإضافية (نظام الصفحة الواحدة الذكي) -->
             <div id="extraPages" class="tab-content" style="display:none;">
-                <div style="display: flex; flex-direction: column; gap: 15px; padding: 10px; text-align: center;">
-                    <a href="shahada.html" style="background-color: #f39c12; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">الشهادة ☝️</a>
-                    <a href="fatwa.html" style="background-color: #16a085; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">الفتاوى الشائعة 📚</a>
-                    <a href="stories.html" style="background-color: #2980b9; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">القصص النبوية 📜</a>
+                
+                <!-- القائمة الرئيسية للأقسام -->
+                <div id="extraMenu" style="display: flex; flex-direction: column; gap: 15px; padding: 10px; text-align: center;">
+                    <button onclick="showExtra('shahadaSection')" style="background-color: #f39c12; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer;">الشهادة ☝️</button>
+                    <button onclick="showExtra('fatwaSection')" style="background-color: #16a085; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer;">الفتاوى الشائعة 📚</button>
+                    <button onclick="showExtra('storiesSection')" style="background-color: #2980b9; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 1.4em; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Tajawal'; cursor: pointer;">القصص النبوية 📜</button>
                 </div>
-                <p style="text-align: center; margin-top: 20px; color: var(--text-secondary); font-size: 1em; font-weight: bold;">(اضغط على الأقسام للانتقال إليها)</p>
+
+                <!-- 1. قسم الشهادة (مخفي افتراضياً) -->
+                <div id="shahadaSection" style="display:none; text-align: center; padding: 20px;">
+                    <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
+                    <div style="font-size: 4em;">☝️</div>
+                    <h2 style="color: #d4af37; font-weight: 900; margin-top: 10px;">عقيدة المسلم</h2>
+                    <div style="font-family: 'Amiri', serif; font-size: 2.3em; font-weight: 900; color: var(--primary); line-height: 1.8; margin: 30px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                        أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا ٱللَّٰهُ<br>وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ
+                    </div>
+                    <p style="font-size: 1.2em; color: var(--text-secondary); font-weight: bold; line-height: 1.8;">
+                        عن النبي ﷺ قال: «مَنْ كَانَ آخِرُ كَلَامِهِ لَا إِلَهَ إِلَّا اللهُ دَخَلَ الجَنَّةَ».<br>
+                        <span style="color: var(--azkar-color); font-size: 0.9em;">اللهم أحينا عليها، وأمتنا عليها، وابعثنا عليها يارب العالمين.</span>
+                    </p>
+                </div>
+
+                <!-- 2. قسم الفتاوى (مخفي افتراضياً) -->
+                <div id="fatwaSection" style="display:none;">
+                    <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
+                    <h3 style="background: #16a085; color: white; padding: 15px; text-align: center; border-radius: 10px; margin-top:0;">📚 الفتاوى الشائعة</h3>
+                    
+                    <details class="extra-details">
+                        <summary class="extra-summary">أحكام الطلاق الشائعة وحكم طلاق الغضبان</summary>
+                        <div class="extra-content">
+                            الطلاق صريح وكناية. اللفظ الصريح مثل (أنت طالق) يقع به الطلاق مباشرة. أما <strong>طلاق الغضبان</strong>، فيقسمه العلماء إلى ثلاثة أقسام:
+                            <br>1. <strong>الغضب الخفيف:</strong> يقع طلاقه بالإجماع.
+                            <br>2. <strong>الغضب الإغلاقي الشديد:</strong> يفقد فيه الرجل وعيه تماماً، فهذا <strong>لا يقع طلاقه</strong> لقول النبي ﷺ: «لَا طَلَاقَ وَلَا عِتَاقَ فِي إِغْلَاقٍ».
+                            <br>3. <strong>الغضب المتوسط:</strong> تجب مراجعة المحاكم الشرعية للفصل فيه.
+                        </div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">أحكام زكاة الفطر ومقدارها نقداً وطعاماً</summary>
+                        <div class="extra-content">
+                            زكاة الفطر فريضة على كل مسلم. 
+                            <br><strong>مقدارها بالوزن:</strong> صاع من طعام أهل البلد وهو ما يعادل تقريباً (2.5 كيلو غرام) عن الشخص الواحد.
+                            <br><strong>إخراجها نقداً:</strong> أجاز كثير من العلماء إخراجها نقداً تيسيراً على الفقراء. ووقت إخراجها الأفضل صباح يوم العيد قبل الصلاة.
+                        </div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">شروط التوبة النصوح من الكبائر</summary>
+                        <div class="extra-content">
+                            مهما عظم ذنب العبد فإن عفو الله أعظم. شروط التوبة النصوح هي:
+                            <br>1. <strong>الإقلاع الفوري عن الذنب.</strong>
+                            <br>2. <strong>الندم الشديد بالقلب.</strong>
+                            <br>3. <strong>العزم الأكيد على عدم العودة إليه.</strong>
+                            <br>4. <strong>رد الحقوق:</strong> إذا كانت المعصية متعلقة بحقوق البشر كسرقة الأموال.
+                        </div>
+                    </details>
+                </div>
+
+                <!-- 3. قسم القصص (مخفي افتراضياً) -->
+                <div id="storiesSection" style="display:none;">
+                    <button onclick="showExtra('extraMenu')" class="back-btn-extra">🔙 رجوع للقائمة</button>
+                    <h3 style="background: #2980b9; color: white; padding: 15px; text-align: center; border-radius: 10px; margin-top:0;">📜 القصص النبوية</h3>
+                    
+                    <details class="extra-details">
+                        <summary class="extra-summary">عظمة الوفاء بالوعد وقصة نبي الله إسماعيل</summary>
+                        <div class="extra-content">
+                            واعد نبي الله إسماعيل عليه السلام رجلاً من قومه في مكان معين ليلتقيا فيه. ذهب إسماعيل في الوقت المحدد، ولكن الرجل نسي الموعد وانشغل. 
+                            <br>مرت الساعات وغابت الشمس وجاء الليل، وإسماعيل باقٍ في مكانه لم يغادره خشية أن يأتي الرجل فلا يجده! واستمر الحال هكذا لثلاثة أيام وهو صابر ينتظر وفاءً بوعده.
+                            <br>وبعد أيام، مر الرجل بالصدفة ففوجئ بإسماعيل جالساً هناك، فصعق واعتذر، فقال له إسماعيل: "لم أكن لأغادر مكاني حتى تأتي، لأني واعدتك أن أكون هنا".
+                            <span class="quran-verse">قال تعالى: {إِنَّهُ كَانَ صَادِقَ الْوَعْدِ وَكَانَ رَسُولًا نَّبِيًّا}</span>
+                        </div>
+                    </details>
+
+                    <details class="extra-details">
+                        <summary class="extra-summary">قصة صبر نبي الله أيوب الشديد</summary>
+                        <div class="extra-content">
+                            ابتلى الله عز وجل نبيه أيوب فخسر أمواله وتجارته، ثم مات أولاده جميعاً في يوم واحد، وأصيب بمرض جلدي وجسدي شديد تساقط بسببه لحمه.
+                            <br>استمر مرضه <strong>ثمانية عشر عاماً</strong>! هجره القريب والبعيد ولم يبقَ معه سوى زوجته الوفية الصابرة التي كانت تخدمه. ورغم كل هذا، لم يتذمر أيوب قط، بل كان حامداً ذاكراً لله.
+                            <br>ولما تضرع لربه مناجياً: "أني مسني الضر وأنت أرحم الراحمين"، أمره الله أن يضرب الأرض بقدمه فنبع ماء اغتسل منه فشُفي وعادت إليه صحته وشبابه ورد الله عليه أهله وأمواله جزاء صبره.
+                        </div>
+                    </details>
+                    
+                    <details class="extra-details">
+                        <summary class="extra-summary">قصة توبة الصحابي كعب بن مالك</summary>
+                        <div class="extra-content">
+                            تخلّف كعب بن مالك عن غزوة تبوك كسلاً رغم قدرته. ولما عاد النبي ﷺ، اعتذر المنافقون كذباً فقبل منهم، لكن كعب قرر الصدق وقال: "يا رسول الله ما كان لي من عذر".
+                            <br>أمر النبي بمقاطعته، فقاطعه المجتمع كله، وضاقت عليه الأرض لمدة <strong>خمسين يوماً</strong>. وفي اليوم الخمسين، أنزل الله توبته في القرآن جزاء صدقه، فاستقبله النبي بوجه يبرق كالقمر فرحاً بتوبته وصدقه.
+                        </div>
+                    </details>
+                </div>
             </div>
 
+            <!-- قسم الأدعية الذكية المتجددة -->
             <div id="aiDuas" class="tab-content" style="display:none;">
                 <div class="ai-dua-box">
                     <div class="ai-dua-text" id="dynamicDuaBox">جاري تحميل الدعاء...</div>
@@ -374,7 +456,9 @@
                 </div>
             </div>
 
+            <!-- قسم القرآن الكريم المعدل -->
             <div id="quran" class="tab-content" style="display:none;">
+                <!-- صندوق حفظ الآيات الجديد -->
                 <div style="background-color: var(--bg-light); border: 2px solid var(--quran-color); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
                     <h4 style="color: var(--quran-color); margin-top: 0; margin-bottom: 15px; font-size: 1.2em;">🔖 حفظ موضع القراءة</h4>
                     <div style="display: flex; gap: 10px; margin-bottom: 15px;">
@@ -470,7 +554,6 @@
     let userLat = null;
     let userLon = null;
 
-    // دالة الساعة الحية (الجديدة)
     function updateClock() {
         const now = new Date();
         const timeString = now.toLocaleTimeString('ar-IQ', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -479,7 +562,7 @@
             clockElement.innerText = timeString;
         }
     }
-    setInterval(updateClock, 1000); // تحديث كل ثانية
+    setInterval(updateClock, 1000); 
 
     function init() {
         document.getElementById('year').innerText = new Date().getFullYear();
@@ -501,7 +584,6 @@
         initQuran(); 
         renderDeadDuas();
         
-        // استدعاء علامة الحفظ عند الفتح
         loadBookmark();
         updateClock();
         
@@ -524,7 +606,6 @@
                     userLat = position.coords.latitude;
                     userLon = position.coords.longitude;
                     
-                    // تحديث القائمة المنسدلة لإضافة "موقعك الحالي"
                     let citySelect = document.getElementById("city");
                     let gpsOption = document.querySelector("option[value='gps']");
                     if(!gpsOption) {
@@ -548,7 +629,6 @@
         }
     }
 
-    // دوال حفظ واسترجاع موضع القراءة (الجديدة)
     function saveBookmark() {
         const surah = document.getElementById('bmSurah').value;
         const ayah = document.getElementById('bmAyah').value;
@@ -674,11 +754,26 @@
     function toggle() { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); document.getElementById('Btn').innerText = isDark ? '🌙' : '☀️'; localStorage.setItem('themeMode', isDark ? 'dark' : 'light'); }
     function generateQR() { document.getElementById("qrcode").innerHTML = ""; new QRCode(document.getElementById("qrcode"), { text: "https://HUMAM7.github.io/ramadan-kareem", width: 140, height: 140, colorDark : "#114258", correctLevel : QRCode.CorrectLevel.L }); }
     
+    // دالة فتح الأقسام الإضافية (جديدة)
+    function showExtra(sectionId) {
+        document.getElementById('extraMenu').style.display = 'none';
+        document.getElementById('shahadaSection').style.display = 'none';
+        document.getElementById('fatwaSection').style.display = 'none';
+        document.getElementById('storiesSection').style.display = 'none';
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // دالة تبديل التبويبات (محدثة)
     function switchTab(id, btn) { 
         document.querySelectorAll('.tab-content').forEach(d => d.style.display='none'); 
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
         document.getElementById(id).style.display='block'; 
         btn.classList.add('active'); 
+        
+        // عند فتح قسم الأقسام الإضافية، نضمن ظهور القائمة الرئيسية
+        if(id === 'extraPages') {
+            showExtra('extraMenu');
+        }
     }
     
     function increaseRosary() { rosaryCounter++; if (rosaryCounter > 33) { rosaryCounter = 0; tasbeehIndex = (tasbeehIndex + 1) % tasbeehList.length; document.getElementById('currentTasbeeh').innerText = tasbeehList[tasbeehIndex]; } document.getElementById('rosaryCount').innerText = rosaryCounter; }
@@ -694,7 +789,7 @@
                 localStorage.setItem("ramadan_city", cityKey);
                 lat = cities[cityKey].lat; lon = cities[cityKey].lon;
             } else {
-                lat = userLat; lon = userLon; // الاستمرار في استخدام الـ GPS إذا تم اختياره
+                lat = userLat; lon = userLon; 
             }
         } else { lat = userLat; lon = userLon; }
         
